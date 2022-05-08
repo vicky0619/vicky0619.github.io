@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CS50 Lecture 0</title>
+    <link href="/2022/05/08/cs50/"/>
+    <url>/2022/05/08/cs50/</url>
+    
+    <content type="html"><![CDATA[<h2 id="What-is-computer-science"><a href="#What-is-computer-science" class="headerlink" title="What is computer science?"></a>What is computer science?</h2><ul><li>Computer science is fundamentally problem solving, but we’ll need to be precise and methodical.</li><li>We can think of problem solving as the process of taking some input (a problem we want to solve) and generate some output (the solution to our problem).</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Learn</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CS50</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AIGO – 高中職生 AI 扎根系列活動</title>
     <link href="/2022/03/20/AIGO-1/"/>
     <url>/2022/03/20/AIGO-1/</url>
