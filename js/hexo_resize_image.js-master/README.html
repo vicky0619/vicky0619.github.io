@@ -1,0 +1,26 @@
+<h1 id="hexo-resize-image-js"><a href="#hexo-resize-image-js" class="headerlink" title="hexo_resize_image.js"></a>hexo_resize_image.js</h1><p>在使用 Hexo 的过程中发现 Markdown 的原生语法貌似没办法设置图片的大小。</p>
+<p>在网上搜索了一下，貌似比较好的做法是：</p>
+<pre><code class="html">&lt;img src=&quot;/image/test.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;
+</code></pre>
+<p>不过我还是想用 Markdown 的原生语法,于是用我抠脚的 JS 写了一个，源码附在底端。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>扩展了 Markdown 的插图语法如下：</p>
+<ol>
+<li><p>可指定像素</p>
+<p> 方法是在 URL 后面添加 <code>?&lt;width&gt;x&lt;height&gt;</code> </p>
+<pre><code class="markdown">![指定像素](/image/test.jpg?200x200)
+</code></pre>
+<p> 可以只指定一个参数，图片会等比例缩放。</p>
+<pre><code class="markdown">![仅指定width](/image/test.jpg?200x)
+![仅指定height](/image/test.jpg?x200)
+</code></pre>
+</li>
+<li><p>可指定缩放比例</p>
+<p> 方法是在 URL 后面添加 <code>?&lt;scale&gt;</code>，等比例缩放图片大小至 <scale>%。</p>
+<pre><code class="markdown">![指定比例](/image/test.jpg?40)
+</code></pre>
+</li>
+</ol>
+<h2 id="添加到页面中"><a href="#添加到页面中" class="headerlink" title="添加到页面中"></a>添加到页面中</h2><p>在模板中为页面添加 js 脚本。</p>
+<p>我使用的是 huno 主题，在 <code>theme/huno/layout/layout.ejs</code> 中 <code>&lt;/body&gt;</code> 前添加了如下语句：</p>
+<pre><code class="html">&lt;script src=&quot;&lt;%- config.root %&gt;js/hexo_resize_image.js&quot;&gt;&lt;/script&gt;
+</code></pre>
