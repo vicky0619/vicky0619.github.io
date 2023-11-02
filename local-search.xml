@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>區塊鏈初學note</title>
+    <link href="/2023/11/03/blockchain/"/>
+    <url>/2023/11/03/blockchain/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p><a href="https://blockbar.io/">區塊吧</a></p><h2 id="區塊鏈的特性整理"><a href="#區塊鏈的特性整理" class="headerlink" title="區塊鏈的特性整理"></a>區塊鏈的特性整理</h2><ol><li>去中心化 ( 分散式帳本的特性，會在後續文章仔細說明此特性 )</li><li>所有交易公開透明</li><li>已被紀錄到帳本上的交易不可被篡改</li><li>可追溯性，因為已經放到鏈上的交易不會被篡改，可以隨時查閱過去的某一筆交易紀錄</li><li>每個人的分散式個人帳本一定都會完全一模一樣，也一定會和鏈上的一樣</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Computer Science</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>blockchain</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AIGO 人工智慧概論課程</title>
     <link href="/2022/05/30/AIGO%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E6%A6%82%E8%AB%96%E8%AA%B2%E7%A8%8B/"/>
     <url>/2022/05/30/AIGO%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E6%A6%82%E8%AB%96%E8%AA%B2%E7%A8%8B/</url>
