@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/planefav.png">
+  <link rel="icon" href="/img/planefav.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Vicky">
+  <meta name="keywords" content="">
+  
+  <title>YOLO Object Detection for Museum Exhibition Classification - Vicky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"vicky0619.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<script src="/js/hexo_resize_image.js"></script><body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Vicky's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                交換連結
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/sconaboutbanner.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="YOLO Object Detection for Museum Exhibition Classification">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-10-04 01:34" pubdate>
+        2024年10月4日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">YOLO Object Detection for Museum Exhibition Classification</h1>
+            
+            <div class="markdown-body">
+              <h1 id="YOLO-Object-Detection-for-Museum-Exhibition-Classification"><a href="#YOLO-Object-Detection-for-Museum-Exhibition-Classification" class="headerlink" title="YOLO Object Detection for Museum Exhibition Classification"></a>YOLO Object Detection for Museum Exhibition Classification</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>In this project, we focus on building an object detection pipeline for classifying museum exhibits using the YOLO (You Only Look Once) model. This model allows real-time object detection and classification, which can be highly effective in environments like museums where multiple objects or artworks need to be quickly identified and categorized.</p>
+<p>The implementation of this project involves building and running models using TensorFlow Lite, processing camera input, handling raw data, and optimizing performance to ensure accurate results. Let’s dive into the key aspects and challenges of the project.</p>
+<hr>
+<h2 id="Project-Overview"><a href="#Project-Overview" class="headerlink" title="Project Overview"></a>Project Overview</h2><h3 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h3><p>Museums contain various exhibits that require careful classification and tagging. Manually cataloging every piece of art or exhibit can be both time-consuming and error-prone. Using computer vision techniques, such as object detection, helps in automating this process, making it both quicker and more accurate.</p>
+<p>The main goal of this project is to use the YOLO model to detect objects in real-time through a camera, classify them, and extract meaningful metadata, allowing for efficient and automated tagging of exhibits.</p>
+<hr>
+<h2 id="Project-Structure"><a href="#Project-Structure" class="headerlink" title="Project Structure"></a>Project Structure</h2><h3 id="Core-Components"><a href="#Core-Components" class="headerlink" title="Core Components"></a>Core Components</h3><ol>
+<li><p><strong>YOLO Model Loading</strong>:<br> The YOLO model is loaded into the app using TensorFlow Lite. It’s a highly efficient object detection model that can work in real-time, making it suitable for mobile applications.</p>
+</li>
+<li><p><strong>Camera Input</strong>:<br> The app uses the device camera to capture images in real-time. The <code>CameraViewModel</code> handles camera permission checks, video sessions, and captures, ensuring that the data is fed properly to the object detection pipeline.</p>
+</li>
+<li><p><strong>Data Preprocessing</strong>:<br> Before feeding the image data to the YOLO model, we resize and normalize the image. This ensures that the model receives data in a consistent format and improves the accuracy of object detection.</p>
+</li>
+<li><p><strong>Object Detection and Classification</strong>:<br> Once the preprocessed image data is passed to the YOLO model, it outputs an array of bounding boxes and class probabilities. These values are parsed, and the objects are classified into one of the predefined categories (e.g., <code>&quot;obj1&quot;</code>, <code>&quot;obj2&quot;</code>, …, <code>&quot;obj7&quot;</code>).</p>
+</li>
+<li><p><strong>Anti-Reflection Model</strong>:<br> To improve detection accuracy, a separate anti-reflection model processes images before they are fed into the YOLO model. This helps mitigate issues caused by glass reflections or glare, which are common in museum environments.</p>
+</li>
+<li><p><strong>Debugging Output</strong>:<br> To analyze and optimize the model’s performance, we print and visualize bounding boxes, confidence scores, and their respective classifications. Raw data is printed for inspection, making it easier to diagnose and solve issues with the model’s output.</p>
+</li>
+</ol>
+<hr>
+<h2 id="Key-Challenges"><a href="#Key-Challenges" class="headerlink" title="Key Challenges"></a>Key Challenges</h2><ol>
+<li><p><strong>Bounding Box Parsing</strong>:<br>The YOLO model outputs bounding boxes with associated probabilities for various classes. A critical part of the project was iterating through these bounding boxes, identifying the class with the highest probability, and correctly mapping it to the corresponding label.</p>
+</li>
+<li><p><strong>Data Handling and Debugging</strong>:<br>Understanding the raw output of the YOLO model in terms of <code>Float32</code> values was crucial for debugging. Extracting the correct data and handling large arrays of floats required careful inspection and verification.</p>
+</li>
+<li><p><strong>Reflection Mitigation</strong>:<br>In museums, many exhibits are behind glass, which can cause reflections and interfere with the model’s accuracy. A separate anti-reflection model was introduced to enhance the detection performance.</p>
+</li>
+<li><p><strong>Performance Optimization</strong>:<br>Ensuring real-time object detection is no small feat. To achieve high FPS (frames per second) and accurate detection, preprocessing was optimized, and model inference was streamlined to reduce any potential lags.</p>
+</li>
+</ol>
+<hr>
+<h2 id="Code-Snippets"><a href="#Code-Snippets" class="headerlink" title="Code Snippets"></a>Code Snippets</h2><h3 id="Model-Parsing-and-Bounding-Box-Extraction"><a href="#Model-Parsing-and-Bounding-Box-Extraction" class="headerlink" title="Model Parsing and Bounding Box Extraction"></a>Model Parsing and Bounding Box Extraction</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">parseYoloOutput</span>(<span class="hljs-params">from</span> <span class="hljs-params">interpreter</span>: <span class="hljs-type">Interpreter</span>)</span> -&gt; <span class="hljs-type">String</span>? &#123;<br>    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> outputTensor <span class="hljs-operator">=</span> <span class="hljs-keyword">try?</span> interpreter.output(at: <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Unable to fetch YOLO model output tensor&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    &#125;<br>    <br>    <span class="hljs-comment">// Convert output to an array of Float32</span><br>    <span class="hljs-keyword">let</span> outputData <span class="hljs-operator">=</span> outputTensor.data.toArray(type: <span class="hljs-type">Float32</span>.<span class="hljs-keyword">self</span>)<br>    <br>    <span class="hljs-comment">// Debugging: Print all the Float32 values</span><br>    <span class="hljs-keyword">for</span> (index, value) <span class="hljs-keyword">in</span> outputData.enumerated() &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Float32 value at index <span class="hljs-subst">\(index)</span>: <span class="hljs-subst">\(value)</span>&quot;</span>)<br>    &#125;<br>    <br>    <span class="hljs-comment">// Initialize maxProbabilities array to track the highest probabilities</span><br>    <span class="hljs-keyword">var</span> maxProbabilities <span class="hljs-operator">=</span> [<span class="hljs-type">Float</span>](repeating: <span class="hljs-operator">-</span><span class="hljs-number">1.0</span>, count: <span class="hljs-number">11</span>)<br>    <span class="hljs-keyword">var</span> detectedBoundingBoxIndex: <span class="hljs-type">Int</span> <span class="hljs-operator">=</span> <span class="hljs-operator">-</span><span class="hljs-number">1</span><br>    <br>    <span class="hljs-comment">// Loop through all bounding boxes</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span><span class="hljs-operator">..&lt;</span><span class="hljs-number">8400</span> &#123;<br>        <span class="hljs-keyword">let</span> classProbabilities <span class="hljs-operator">=</span> outputData[(i <span class="hljs-operator">*</span> <span class="hljs-number">11</span>)<span class="hljs-operator">..&lt;</span>(i <span class="hljs-operator">*</span> <span class="hljs-number">11</span> <span class="hljs-operator">+</span> <span class="hljs-number">11</span>)]<br>        <br>        <span class="hljs-keyword">for</span> (j, probability) <span class="hljs-keyword">in</span> classProbabilities.enumerated() &#123;<br>            <span class="hljs-keyword">if</span> probability <span class="hljs-operator">&gt;</span> maxProbabilities[j] &#123;<br>                maxProbabilities[j] <span class="hljs-operator">=</span> probability<br>                detectedBoundingBoxIndex <span class="hljs-operator">=</span> i<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">// Print all the maxProbabilities for debugging</span><br>    <span class="hljs-keyword">for</span> (index, probability) <span class="hljs-keyword">in</span> maxProbabilities.enumerated() &#123;<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;maxProbability[<span class="hljs-subst">\(index)</span>]: <span class="hljs-subst">\(probability)</span>&quot;</span>)<br>    &#125;<br>    <br>    <span class="hljs-comment">// Determine the label based on the highest probability</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> maxIndex <span class="hljs-operator">=</span> maxProbabilities.indices.max(by: &#123; maxProbabilities[<span class="hljs-variable">$0</span>] <span class="hljs-operator">&lt;</span> maxProbabilities[<span class="hljs-variable">$1</span>] &#125;) &#123;<br>        <span class="hljs-keyword">let</span> maxProbability <span class="hljs-operator">=</span> maxProbabilities[maxIndex]<br>        <span class="hljs-keyword">let</span> yoloLabels <span class="hljs-operator">=</span> [<span class="hljs-string">&quot;obj1&quot;</span>, <span class="hljs-string">&quot;obj2&quot;</span>, <span class="hljs-string">&quot;obj3&quot;</span>, <span class="hljs-string">&quot;obj4&quot;</span>, <span class="hljs-string">&quot;obj5&quot;</span>, <span class="hljs-string">&quot;obj6&quot;</span>, <span class="hljs-string">&quot;obj7&quot;</span>]<br>        <br>        <span class="hljs-keyword">if</span> maxProbability <span class="hljs-operator">&gt;</span> <span class="hljs-number">0.5</span> <span class="hljs-operator">&amp;&amp;</span> maxIndex <span class="hljs-operator">&lt;</span> yoloLabels.count &#123;<br>            <span class="hljs-keyword">let</span> detectedLabel <span class="hljs-operator">=</span> yoloLabels[maxIndex]<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Detected Class: <span class="hljs-subst">\(detectedLabel)</span>, Probability: <span class="hljs-subst">\(maxProbability)</span>&quot;</span>)<br>            <span class="hljs-keyword">return</span> detectedLabel<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Unknown Class&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Debugging-Output"><a href="#Debugging-Output" class="headerlink" title="Debugging Output"></a>Debugging Output</h3><p>It was crucial to print out the raw data and bounding box information while developing the model. Here’s how that was accomplished:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// Check raw byte content</span><br><span class="hljs-keyword">let</span> data <span class="hljs-operator">=</span> outputTensor.data<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Data Length: <span class="hljs-subst">\(data.count)</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Raw Data Bytes: <span class="hljs-subst">\(data.prefix(<span class="hljs-number">100</span>))</span>&quot;</span>) <span class="hljs-comment">// Print first 100 bytes for inspection</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Parsing-Bounding-Boxes"><a href="#Parsing-Bounding-Boxes" class="headerlink" title="Parsing Bounding Boxes"></a>Parsing Bounding Boxes</h3><p>A custom struct was used to store parsed bounding box information:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BoundingBox</span> </span>&#123;<br>    <span class="hljs-keyword">let</span> x1: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> y1: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> x2: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> y2: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> cx: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> cy: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> w: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> h: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> cnf: <span class="hljs-type">Float</span><br>    <span class="hljs-keyword">let</span> cls: <span class="hljs-type">Int</span><br>    <span class="hljs-keyword">let</span> clsName: <span class="hljs-type">String</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Lessons-Learned"><a href="#Lessons-Learned" class="headerlink" title="Lessons Learned"></a>Lessons Learned</h2><ol>
+<li><strong>Proper Data Handling</strong>: Correctly parsing and inspecting raw data is key in ensuring the accuracy of the model output.</li>
+<li><strong>Performance Matters</strong>: With real-time object detection, performance optimizations in both preprocessing and inference are critical.</li>
+<li><strong>Reflection Handling</strong>: Addressing environmental issues like reflections can greatly improve model accuracy, especially in unique settings like museums.</li>
+</ol>
+<hr>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This project is an exciting step toward automating the classification of museum exhibits. By leveraging the YOLO model’s real-time detection capabilities and addressing environmental factors like reflections, we aim to make cataloging exhibits a seamless and efficient process.</p>
+<p>Stay tuned for more updates as we continue to improve and fine-tune the model for better performance and accuracy!</p>
+<hr>
+<h2 id="Future-Work"><a href="#Future-Work" class="headerlink" title="Future Work"></a>Future Work</h2><ol>
+<li><strong>Model Fine-Tuning</strong>: Experimenting with different versions of the YOLO model for better accuracy and performance.</li>
+<li><strong>Better Reflection Handling</strong>: Developing more advanced anti-reflection techniques to further reduce environmental interference.</li>
+<li><strong>Multi-Object Detection</strong>: Optimizing for detecting and classifying multiple objects within the same frame.</li>
+</ol>
+<hr>
+<p><em>Thank you for reading!</em> If you have any suggestions or questions, please feel free to reach out.</p>
+<p>Happy coding!</p>
+<hr>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用<atarget="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/03/blockchain/">
+                        <span class="hidden-mobile">區塊鏈初學note</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/js/hexo_resize_image.js"></script></body>
+</html>
