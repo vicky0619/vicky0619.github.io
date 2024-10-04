@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      466 字
+      497 字
     </span>
   
 
@@ -287,7 +287,8 @@
 <ul>
 <li>進入 <code>build</code> 資料夾：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> Desktop/Project/build<br></code></pre></td></tr></table></figure></li>
 <li>生成與編譯：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake ..<br>make<br></code></pre></td></tr></table></figure></li>
-<li>執行程式：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./vicky<br></code></pre></td></tr></table></figure></li>
+<li>執行程式：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./vicky<br></code></pre></td></tr></table></figure>
+<img src="https://i.imgur.com/likHQMX.png" srcset="/img/loading.gif" lazyload alt="`.obj` convert to `.pcd`"></li>
 </ul>
 </li>
 </ol>
@@ -295,7 +296,7 @@
 <li><strong>Obj 轉為點雲檔案並過濾非表面數據</strong>：<ul>
 <li><strong>補洞</strong>：處理點雲中的空隙，使表面完整。</li>
 <li><strong>消除內部點（變空心）</strong>：保留物體表面點，將內部點排除，形成空心結構。<blockquote>
-<p>Desktop/point cloud model 直接處理pcd</p>
+<p>Desktop/point cloud model 直接處理pcd<br>減少點數的程式碼有了(vicky.cpp)<br>現在只要弄弄 <a target="_blank" rel="noopener" href="https://github.com/valeoai/POCO">POCO: Point Convolution for Surface Reconstruction</a> 找表面的程式碼</p>
 </blockquote>
 </li>
 </ul>
