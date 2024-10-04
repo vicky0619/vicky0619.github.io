@@ -14,13 +14,29 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="大學專題紀錄">
   <meta name="author" content="Vicky">
   <meta name="keywords" content="">
   
-  <title>標籤 - Vicky&#39;s Blog</title>
+  <title>UAV Project - Vicky&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <script src="/js/hexo_resize_image.js"></script><body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -154,22 +170,63 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://i.imgur.com/2KBn3Gc.jpeg') no-repeat center center;
+         style="background: url('https://storage.googleapis.com/inspiredflight-com/uploads/IF1200A-WIRIS_CROP.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="標籤">
+            <span class="h2" id="subtitle" title="UAV Project">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-10-04 18:03" pubdate>
+        2024年10月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      457 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -178,24 +235,142 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/AI/" style="font-size: 30px; color: #337ab7">AI</a> <a href="/tags/AIGO/" style="font-size: 30px; color: #337ab7">AIGO</a> <a href="/tags/Algorithm/" style="font-size: 15px; color: #bbe">Algorithm</a> <a href="/tags/C/" style="font-size: 15px; color: #bbe">C++</a> <a href="/tags/CS50/" style="font-size: 15px; color: #bbe">CS50</a> <a href="/tags/MUN/" style="font-size: 15px; color: #bbe">MUN</a> <a href="/tags/Machine-Learning/" style="font-size: 30px; color: #337ab7">Machine Learning</a> <a href="/tags/Project/" style="font-size: 15px; color: #bbe">Project</a> <a href="/tags/Scratch/" style="font-size: 15px; color: #bbe">Scratch</a> <a href="/tags/life/" style="font-size: 15px; color: #bbe">life</a>
-</div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">UAV Project</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>這個專案展示了使用無人機來進行建築結構檢查的創新方法。傳統的檢查方式不僅昂貴且耗時，還存在風險。通過使用無人機，我們可以捕捉高解析度的影像並收集數據，有效檢查建築結構中的潛在問題。</p>
+<h2 id="核心技術概述"><a href="#核心技術概述" class="headerlink" title="核心技術概述"></a>核心技術概述</h2><ol>
+<li><p><strong>Point Cloud 處理：</strong></p>
+<ul>
+<li>使用 <strong>Point Cloud Library (PCL)</strong> 去噪原始 3D Point Cloud，並應用濾波器去除雜訊，獲得更平滑、真實的表面。</li>
+<li>根據 Point Cloud 的密度，將距離小於某個閾值的點連成線，形成多邊形（Site）。</li>
+<li>去除過近的 Site 邊界，避免無人機進入無法飛行的狹窄區域。</li>
+</ul>
+</li>
+<li><p><strong>Voronoi Diagram 應用：</strong></p>
+<ul>
+<li>利用 Voronoi Diagram 將建築結構劃分為不同區域，每個區域內的點與相應障礙物 (Site) 距離最短。</li>
+<li>這可以讓無人機保持與障礙物的安全距離，進行有效路徑規劃。</li>
+</ul>
+</li>
+<li><p><strong>Delaunay Triangulation：</strong></p>
+<ul>
+<li>由 Voronoi Diagram 生成 Delaunay Triangulation，並利用其垂直特性，使無人機鏡頭保持面向建築物。</li>
+</ul>
+</li>
+</ol>
+<h2 id="檔案和操作流程"><a href="#檔案和操作流程" class="headerlink" title="檔案和操作流程"></a>檔案和操作流程</h2><h3 id="讀取-Point-Cloud-檔案"><a href="#讀取-Point-Cloud-檔案" class="headerlink" title="讀取 Point Cloud 檔案"></a>讀取 Point Cloud 檔案</h3><ul>
+<li><strong>查看點雲</strong>：下載並使用 <strong>CloudCompare</strong> 來查看點雲數據的樣貌。</li>
+<li><strong>連接實驗室 Ubuntu Server</strong>：<ul>
+<li>進入 <code>Desktop/project</code>，所有相關的檔案都在這個資料夾。</li>
+</ul>
+</li>
+</ul>
+<h3 id="程式編寫與執行"><a href="#程式編寫與執行" class="headerlink" title="程式編寫與執行"></a>程式編寫與執行</h3><ol>
+<li><p><strong>寫程式：</strong></p>
+<ul>
+<li>使用以下指令打開編輯器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">code vicky.cpp<br></code></pre></td></tr></table></figure></li>
+<li>將會自動開啟 <strong>Visual Studio Code</strong> 進行程式編輯。</li>
+</ul>
+</li>
+<li><p><strong>執行程式：</strong></p>
+<ul>
+<li>進入 <code>build</code> 資料夾：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> Desktop/Project/build<br></code></pre></td></tr></table></figure></li>
+<li>生成與編譯：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake ..<br>make<br></code></pre></td></tr></table></figure></li>
+<li>執行程式：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./vicky<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h3 id="2024-10-04"><a href="#2024-10-04" class="headerlink" title="2024-10-04"></a>2024-10-04</h3><ul>
+<li><strong>Obj 轉為點雲檔案並過濾非表面數據</strong>：<ul>
+<li><strong>補洞</strong>：處理點雲中的空隙，使表面完整。</li>
+<li><strong>消除內部點（變空心）</strong>：保留物體表面點，將內部點排除，形成空心結構。</li>
+</ul>
+</li>
+</ul>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Science/">Computer Science</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Machine-Learning/">Machine Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Project/">Project</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用<atarget="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/04/YOLO-Object-Detection-for-Museum-Exhibition-Classification/">
+                        <span class="hidden-mobile">Museum Exhibition Classification</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -299,9 +474,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 

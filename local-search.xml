@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>UAV Project</title>
+    <link href="/2024/10/04/UAV-project/"/>
+    <url>/2024/10/04/UAV-project/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>這個專案展示了使用無人機來進行建築結構檢查的創新方法。傳統的檢查方式不僅昂貴且耗時，還存在風險。通過使用無人機，我們可以捕捉高解析度的影像並收集數據，有效檢查建築結構中的潛在問題。</p><h2 id="核心技術概述"><a href="#核心技術概述" class="headerlink" title="核心技術概述"></a>核心技術概述</h2><ol><li><p><strong>Point Cloud 處理：</strong></p><ul><li>使用 <strong>Point Cloud Library (PCL)</strong> 去噪原始 3D Point Cloud，並應用濾波器去除雜訊，獲得更平滑、真實的表面。</li><li>根據 Point Cloud 的密度，將距離小於某個閾值的點連成線，形成多邊形（Site）。</li><li>去除過近的 Site 邊界，避免無人機進入無法飛行的狹窄區域。</li></ul></li><li><p><strong>Voronoi Diagram 應用：</strong></p><ul><li>利用 Voronoi Diagram 將建築結構劃分為不同區域，每個區域內的點與相應障礙物 (Site) 距離最短。</li><li>這可以讓無人機保持與障礙物的安全距離，進行有效路徑規劃。</li></ul></li><li><p><strong>Delaunay Triangulation：</strong></p><ul><li>由 Voronoi Diagram 生成 Delaunay Triangulation，並利用其垂直特性，使無人機鏡頭保持面向建築物。</li></ul></li></ol><h2 id="檔案和操作流程"><a href="#檔案和操作流程" class="headerlink" title="檔案和操作流程"></a>檔案和操作流程</h2><h3 id="讀取-Point-Cloud-檔案"><a href="#讀取-Point-Cloud-檔案" class="headerlink" title="讀取 Point Cloud 檔案"></a>讀取 Point Cloud 檔案</h3><ul><li><strong>查看點雲</strong>：下載並使用 <strong>CloudCompare</strong> 來查看點雲數據的樣貌。</li><li><strong>連接實驗室 Ubuntu Server</strong>：<ul><li>進入 <code>Desktop/project</code>，所有相關的檔案都在這個資料夾。</li></ul></li></ul><h3 id="程式編寫與執行"><a href="#程式編寫與執行" class="headerlink" title="程式編寫與執行"></a>程式編寫與執行</h3><ol><li><p><strong>寫程式：</strong></p><ul><li>使用以下指令打開編輯器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">code vicky.cpp<br></code></pre></td></tr></table></figure></li><li>將會自動開啟 <strong>Visual Studio Code</strong> 進行程式編輯。</li></ul></li><li><p><strong>執行程式：</strong></p><ul><li>進入 <code>build</code> 資料夾：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> Desktop/Project/build<br></code></pre></td></tr></table></figure></li><li>生成與編譯：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake ..<br>make<br></code></pre></td></tr></table></figure></li><li>執行程式：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./vicky<br></code></pre></td></tr></table></figure></li></ul></li></ol><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h3 id="2024-10-04"><a href="#2024-10-04" class="headerlink" title="2024-10-04"></a>2024-10-04</h3><ul><li><strong>Obj 轉為點雲檔案並過濾非表面數據</strong>：<ul><li><strong>補洞</strong>：處理點雲中的空隙，使表面完整。</li><li><strong>消除內部點（變空心）</strong>：保留物體表面點，將內部點排除，形成空心結構。</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Computer Science</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Machine Learning</tag>
+      
+      <tag>Algorithm</tag>
+      
+      <tag>Project</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Museum Exhibition Classification</title>
     <link href="/2024/10/04/YOLO-Object-Detection-for-Museum-Exhibition-Classification/"/>
     <url>/2024/10/04/YOLO-Object-Detection-for-Museum-Exhibition-Classification/</url>
