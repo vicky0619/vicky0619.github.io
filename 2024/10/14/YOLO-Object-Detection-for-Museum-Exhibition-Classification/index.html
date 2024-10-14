@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/planefav.png">
+  <link rel="icon" href="/img/planefav.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Overcoming the Reflection Challenge with AI">
+  <meta name="author" content="Vicky">
+  <meta name="keywords" content="">
+  
+  <title>AI-Assisted Museum Exhibition Classification for Enhanced Museum Experience - Vicky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"vicky0619.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<script src="/js/hexo_resize_image.js"></script><body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Vicky's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                交換連結
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/AIGO_museum.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="AI-Assisted Museum Exhibition Classification for Enhanced Museum Experience">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-10-14 01:34" pubdate>
+        2024年10月14日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AI-Assisted Museum Exhibition Classification for Enhanced Museum Experience</h1>
+            
+            <div class="markdown-body">
+              <h1 id="AI-Assisted-Museum-Exhibition-Classification"><a href="#AI-Assisted-Museum-Exhibition-Classification" class="headerlink" title="AI-Assisted Museum Exhibition Classification"></a>AI-Assisted Museum Exhibition Classification</h1><details>
+  <summary>English Version (Click to expand)</summary>
+  
+<h2 id="AI-Assisted-Museum-Exhibition-Classification-Overcoming-the-Reflection-Challenge"><a href="#AI-Assisted-Museum-Exhibition-Classification-Overcoming-the-Reflection-Challenge" class="headerlink" title="AI-Assisted Museum Exhibition Classification: Overcoming the Reflection Challenge"></a>AI-Assisted Museum Exhibition Classification: Overcoming the Reflection Challenge</h2><h3 id="📖-Background"><a href="#📖-Background" class="headerlink" title="📖 Background"></a>📖 Background</h3><p>  With advancements in image recognition and AI technologies, museums are eager to develop more intuitive visitor guides. Ideally, visitors could use their mobile devices to snap photos of exhibits, and the system would instantly recognize the artifacts and provide detailed guidance. However, achieving this vision presents multiple challenges:</p>
+<ol>
+<li><strong>Glass Reflections</strong>: Many artifacts are encased in glass display cases, leading to reflections that obscure the objects and impede accurate AI recognition.</li>
+<li><strong>Angles and Positions</strong>: Visitors may struggle to capture complete images due to positioning or angle constraints.</li>
+<li><strong>External Interferences</strong>: Poor lighting or cluttered backgrounds further complicate image recognition.</li>
+</ol>
+<p>  To address these challenges, our project developed an AI system that accurately identifies museum exhibits despite these difficulties, especially glass reflections.</p>
+<h3 id="✨-Our-Solution"><a href="#✨-Our-Solution" class="headerlink" title="✨ Our Solution"></a>✨ Our Solution</h3><h4 id="1-Reflection-Removal-Model"><a href="#1-Reflection-Removal-Model" class="headerlink" title="1. Reflection Removal Model"></a>1. Reflection Removal Model</h4><p>  <strong>Background</strong>: Reflections from display cases are a significant obstacle in museum environments. Existing open-source reflection removal models were insufficient for handling the complex lighting and reflective scenarios found in museum exhibition halls. To overcome this:</p>
+<ul>
+<li>We developed a specialized reflection removal model that adapts to diverse, non-fixed environments.</li>
+<li>We framed the reflection removal task as a <strong>style transformation</strong> and employed the <strong>Pix2pix GAN</strong> model with <strong>Sobel Features</strong> to guide the model’s attention to reflective areas. This approach effectively minimized reflection interference while preserving key artifact details.</li>
+</ul>
+<h4 id="2-Artifact-Identification-Model"><a href="#2-Artifact-Identification-Model" class="headerlink" title="2. Artifact Identification Model"></a>2. Artifact Identification Model</h4><p>  To identify multiple artifacts within a single photo, we used the <strong>YOLOv8n</strong> model. We manually labeled <strong>2,000 artifact images</strong> and used data augmentation techniques (e.g., flipping, scaling, and brightness adjustments) to enhance model robustness.</p>
+<ul>
+<li>We trained two versions of the model: the original YOLOv8n and a reflection-enhanced version that uses images processed by the reflection removal model.</li>
+</ul>
+<h4 id="3-Combining-Reflection-Removal-and-YOLO-Detection"><a href="#3-Combining-Reflection-Removal-and-YOLO-Detection" class="headerlink" title="3. Combining Reflection Removal and YOLO Detection"></a>3. Combining Reflection Removal and YOLO Detection</h4><p>  We developed two artifact identification pathways:</p>
+<ol>
+<li><strong>Original Identification</strong>: Direct YOLOv8n detection on the original images.</li>
+<li><strong>Reflection-Removed Identification</strong>: YOLOv8n detection after removing reflections.</li>
+</ol>
+<p>  By comparing the outputs of both versions, we chose the optimal identification result, ensuring accurate artifact recognition across different environments.</p>
+<h3 id="🏆-Results-amp-Achievements"><a href="#🏆-Results-amp-Achievements" class="headerlink" title="🏆 Results &amp; Achievements"></a>🏆 Results &amp; Achievements</h3><h4 id="Data-Outcomes"><a href="#Data-Outcomes" class="headerlink" title="Data Outcomes"></a>Data Outcomes</h4><ul>
+<li><strong>V1 Model (Original YOLO)</strong>: Achieved a classification accuracy of <strong>92.7%</strong>.</li>
+<li><strong>V2 Model (With Reflection Removal)</strong>: Combined accuracy improved to <strong>94.5%</strong>, reducing misclassification and enhancing recognition quality.</li>
+</ul>
+<h4 id="Qualitative-Analysis"><a href="#Qualitative-Analysis" class="headerlink" title="Qualitative Analysis"></a>Qualitative Analysis</h4><ul>
+<li><strong>Focus on Reflections</strong>: The reflection removal model successfully identified reflective areas and minimized interference while preserving exhibit details.</li>
+<li><strong>Detection Improvement</strong>: Combining both reflection removal and YOLO detection reduced misclassifications, especially in environments with high reflections.</li>
+</ul>
+<h3 id="📲-App-Development"><a href="#📲-App-Development" class="headerlink" title="📲 App Development"></a>📲 App Development</h3><p>  We deployed the reflection removal and YOLOv8n models in a dual-platform mobile app built using <strong>Android Studio</strong> and <strong>Xcode</strong>. This app allows users to easily capture images of artifacts and get instant, accurate information.</p>
+<p>  <strong>Core Features</strong>:</p>
+<ol>
+<li><strong>Camera Functionality</strong>: Users can capture exhibit photos effortlessly.</li>
+<li><strong>Automated Processing</strong>: Photos undergo both reflection removal and artifact identification.</li>
+<li><strong>Interactive Information Display</strong>: Detailed exhibit information is displayed, providing an enhanced visitor experience.</li>
+</ol>
+<h3 id="🚀-Benefits-amp-Real-World-Application"><a href="#🚀-Benefits-amp-Real-World-Application" class="headerlink" title="🚀 Benefits &amp; Real-World Application"></a>🚀 Benefits &amp; Real-World Application</h3><h4 id="Achievements-amp-Advantages"><a href="#Achievements-amp-Advantages" class="headerlink" title="Achievements &amp; Advantages"></a>Achievements &amp; Advantages</h4><ul>
+<li><strong>Reflection Removal</strong>: Improved artifact recognition in museums with glass display cases.</li>
+<li><strong>YOLO Multi-Object Detection</strong>: Accurate classification even for multiple artifacts in a single image.</li>
+<li><strong>Dual-Platform App</strong>: Available on both iOS and Android, enhancing user accessibility.</li>
+</ul>
+<h4 id="Practical-Application"><a href="#Practical-Application" class="headerlink" title="Practical Application"></a>Practical Application</h4><ol>
+<li><strong>Museum Experience Enhancement</strong>: Visitors can use the app to quickly get information about exhibits, improving interactivity.</li>
+<li><strong>Wider Cultural and Educational Use</strong>: The solution can be expanded to cultural venues such as art galleries and educational institutions.</li>
+</ol>
+<h3 id="🎯-Future-Prospects"><a href="#🎯-Future-Prospects" class="headerlink" title="🎯 Future Prospects"></a>🎯 Future Prospects</h3><ol>
+<li><strong>Model Optimization</strong>: Further optimize reflection removal and YOLO models for better accuracy and faster performance.</li>
+<li><strong>Multi-Language Support</strong>: Expand the app’s UI to support multiple languages for international visitors.</li>
+<li><strong>Broader Applications</strong>: Apply the solution beyond museums, such as product photography, academic research, and commercial exhibits.</li>
+</ol>
+<h3 id="🤝-Summary"><a href="#🤝-Summary" class="headerlink" title="🤝 Summary"></a>🤝 Summary</h3><p>  This project has successfully enhanced automated museum exhibit identification, overcoming challenges like glass reflections. We look forward to future collaborations with museums and expanding the solution to other sectors to continue advancing AI in cultural heritage.</p>
+</details>
+
+<details>
+  <summary>中文版本 (點擊展開)</summary>
+  
+<h2 id="AI輔助博物館展品分類：克服玻璃反光挑戰"><a href="#AI輔助博物館展品分類：克服玻璃反光挑戰" class="headerlink" title="AI輔助博物館展品分類：克服玻璃反光挑戰"></a>AI輔助博物館展品分類：克服玻璃反光挑戰</h2><h3 id="📖-背景"><a href="#📖-背景" class="headerlink" title="📖 背景"></a>📖 背景</h3><p>  隨著圖像識別技術和AI技術的進步，博物館希望開發更直觀的參觀導覽方式：參觀者可以通過手持行動裝置拍攝展品，系統即時識別展品並提供詳細導覽資訊。然而，要實現這一目標存在多個挑戰：</p>
+<ol>
+<li><strong>玻璃反光</strong>：許多展品放置在玻璃展示櫃中，反光干擾會影響AI對文物的準確識別。</li>
+<li><strong>拍攝角度與位置</strong>：參觀者因位置或角度限制，無法拍攝完整展品影像，影響識別精度。</li>
+<li><strong>外在干擾因素</strong>：光線不足或背景雜亂等因素，增加了拍攝困難度並影響AI辨識效果。</li>
+</ol>
+<p>  針對這些挑戰，我們開發了一種AI系統，即便面對上述各種干擾（尤其是玻璃反光），依然能精確識別博物館展品。</p>
+<h3 id="✨-我們的解決方案"><a href="#✨-我們的解決方案" class="headerlink" title="✨ 我們的解決方案"></a>✨ 我們的解決方案</h3><h4 id="1-反光消除模型"><a href="#1-反光消除模型" class="headerlink" title="1. 反光消除模型"></a>1. 反光消除模型</h4><p>  <strong>背景</strong>：博物館展覽環境中的反光是展品識別的一大障礙。現有的開源反光消除模型無法應對展覽廳中複雜的照明和反射情況。為了解決這個問題：</p>
+<ul>
+<li>我們開發了一個能適應不同環境的反光消除模型。</li>
+<li>我們將反光消除任務設計為<strong>風格轉換</strong>，採用了<strong>Pix2pix GAN</strong>模型並加入了<strong>Sobel特徵</strong>，讓模型能更好地注意反光區域，有效去除反光並保留展品的關鍵細節。</li>
+</ul>
+<h4 id="2-展品識別模型"><a href="#2-展品識別模型" class="headerlink" title="2. 展品識別模型"></a>2. 展品識別模型</h4><p>  為了在單張照片中識別出多個展品，我們採用了<strong>YOLOv8n</strong>模型，手動標註了<strong>2000張展品圖像</strong>，並使用數據增強技術（如翻轉、縮放、亮度調整等）以提高模型的穩健性。</p>
+<ul>
+<li>我們訓練了兩個版本的模型：一個是原始YOLOv8n，另一個是使用經過反光處理的圖像的改進版。</li>
+</ul>
+<h4 id="3-結合反光消除與YOLO檢測"><a href="#3-結合反光消除與YOLO檢測" class="headerlink" title="3. 結合反光消除與YOLO檢測"></a>3. 結合反光消除與YOLO檢測</h4><p>  我們開發了兩種展品識別方法：</p>
+<ol>
+<li><strong>原始識別</strong>：直接在原始圖像上應用YOLOv8n檢測。</li>
+<li><strong>反光處理後識別</strong>：在去除反光後再進行YOLOv8n檢測。</li>
+</ol>
+<p>  透過比較兩種識別結果，我們選擇最優的結果，確保在不同環境下的文物識別達到最佳效果。</p>
+<h3 id="🏆-成果與成就"><a href="#🏆-成果與成就" class="headerlink" title="🏆 成果與成就"></a>🏆 成果與成就</h3><h4 id="數據結果"><a href="#數據結果" class="headerlink" title="數據結果"></a>數據結果</h4><ul>
+<li><strong>V1模型（原始YOLO）</strong>：分類準確率達到**92.7%**。</li>
+<li><strong>V2模型（反光處理後）</strong>：結合準確率提升至**94.5%**，減少誤判並提高了識別質量。</li>
+</ul>
+<h4 id="質性分析"><a href="#質性分析" class="headerlink" title="質性分析"></a>質性分析</h4><ul>
+<li><strong>專注於反光區域</strong>：反光消除模型成功找出並去除反光干擾，保護展品細節。</li>
+<li><strong>檢測改進</strong>：反光消除與YOLO檢測的結合降低了誤判率，尤其在反光嚴重的環境中效果尤為明顯。</li>
+</ul>
+<h3 id="📲-行動應用開發"><a href="#📲-行動應用開發" class="headerlink" title="📲 行動應用開發"></a>📲 行動應用開發</h3><p>  我們將反光消除模型與YOLOv8n模型部署在雙平台行動應用中，利用<strong>Android Studio</strong>和<strong>Xcode</strong>構建，讓用戶能輕鬆拍攝展品照片並獲取詳細資訊。</p>
+<p>  <strong>核心功能</strong>：</p>
+<ol>
+<li><strong>相機功能</strong>：用戶可輕鬆拍攝展品照片。</li>
+<li><strong>自動化處理</strong>：照片經過反光去除和展品識別的雙重處理。</li>
+<li><strong>互動資訊顯示</strong>：提供展品的詳細介紹，提升參觀體驗。</li>
+</ol>
+<h3 id="🚀-實際應用價值"><a href="#🚀-實際應用價值" class="headerlink" title="🚀 實際應用價值"></a>🚀 實際應用價值</h3><h4 id="成就與優勢"><a href="#成就與優勢" class="headerlink" title="成就與優勢"></a>成就與優勢</h4><ul>
+<li><strong>反光消除</strong>：有效改善了博物館中玻璃展示櫃對文物識別的影響。</li>
+<li><strong>YOLO多目標檢測</strong>：即使單張影像中有多個展品，也能準確分類。</li>
+<li><strong>雙平台應用</strong>：同時支援iOS和Android，提升了用戶的可達性。</li>
+</ul>
+<h4 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h4><ol>
+<li><strong>博物館體驗提升</strong>：參觀者可使用應用快速獲取展品資訊，提升互動性。</li>
+<li><strong>文化和教育用途</strong>：此解決方案可擴展至文化場所，如藝術館及教育機構。</li>
+</ol>
+<h3 id="🎯-未來展望"><a href="#🎯-未來展望" class="headerlink" title="🎯 未來展望"></a>🎯 未來展望</h3><ol>
+<li><strong>模型優化</strong>：進一步優化反光消除和YOLO模型，以提高準確率和速度。</li>
+<li><strong>多語言支援</strong>：擴展應用界面，支援多語言，方便國際訪客。</li>
+<li><strong>應用場景拓展</strong>：不僅限於博物館導覽，此技術還可應用於產品攝影、學術研究和商業展覽等場景。</li>
+</ol>
+<h3 id="🤝-總結"><a href="#🤝-總結" class="headerlink" title="🤝 總結"></a>🤝 總結</h3><p>  這個項目成功提升了博物館展品的自動化識別精度，克服了玻璃反光等挑戰。我們期待與更多博物館合作，並將解決方案拓展至其他領域，繼續推動AI在文化遺產中的應用。</p>
+</details>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Science/">Computer Science</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Computer-Science/Cultural-Heritage/">Cultural Heritage</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Machine-Learning/">Machine Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Museum-Technology/">Museum Technology</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用<atarget="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/04/UAV-project/">
+                        <span class="hidden-mobile">UAV Project</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/js/hexo_resize_image.js"></script></body>
+</html>
