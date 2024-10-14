@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      1.9k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      26
        分钟
     </span>
   
@@ -248,7 +248,35 @@
             <h1 style="display: none">AI-Assisted Museum Exhibition Classification for Enhanced Museum Experience</h1>
             
             <div class="markdown-body">
-              <h1 id="AI-Assisted-Museum-Exhibition-Classification"><a href="#AI-Assisted-Museum-Exhibition-Classification" class="headerlink" title="AI-Assisted Museum Exhibition Classification"></a>AI-Assisted Museum Exhibition Classification</h1><details>
+              <style>
+  details {
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  summary {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0073e6;
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 2px solid #0073e6;
+  }
+
+  details[open] {
+    background-color: #eef7ff;
+    transition: background-color 0.5s;
+  }
+
+  summary:hover {
+    color: #005bb5;
+  }
+</style>
+
+<h1 id="AI-Assisted-Museum-Exhibition-Classification"><a href="#AI-Assisted-Museum-Exhibition-Classification" class="headerlink" title="AI-Assisted Museum Exhibition Classification"></a>AI-Assisted Museum Exhibition Classification</h1><details>
   <summary>English Version (Click to expand)</summary>
   
 <h2 id="AI-Assisted-Museum-Exhibition-Classification-Overcoming-the-Reflection-Challenge"><a href="#AI-Assisted-Museum-Exhibition-Classification-Overcoming-the-Reflection-Challenge" class="headerlink" title="AI-Assisted Museum Exhibition Classification: Overcoming the Reflection Challenge"></a>AI-Assisted Museum Exhibition Classification: Overcoming the Reflection Challenge</h2><h3 id="📖-Background"><a href="#📖-Background" class="headerlink" title="📖 Background"></a>📖 Background</h3><p>  With advancements in image recognition and AI technologies, museums are eager to develop more intuitive visitor guides. Ideally, visitors could use their mobile devices to snap photos of exhibits, and the system would instantly recognize the artifacts and provide detailed guidance. However, achieving this vision presents multiple challenges:</p>
@@ -263,6 +291,7 @@
 <li>We developed a specialized reflection removal model that adapts to diverse, non-fixed environments.</li>
 <li>We framed the reflection removal task as a <strong>style transformation</strong> and employed the <strong>Pix2pix GAN</strong> model with <strong>Sobel Features</strong> to guide the model’s attention to reflective areas. This approach effectively minimized reflection interference while preserving key artifact details.</li>
 </ul>
+<p>  <img src="https://i.imgur.com/9M682bu.png" srcset="/img/loading.gif" lazyload alt="Original vs. Reflection Removed"><br>  <em>Comparison: Original photo (top) vs. after reflection removal (bottom)</em></p>
 <h4 id="2-Artifact-Identification-Model"><a href="#2-Artifact-Identification-Model" class="headerlink" title="2. Artifact Identification Model"></a>2. Artifact Identification Model</h4><p>  To identify multiple artifacts within a single photo, we used the <strong>YOLOv8n</strong> model. We manually labeled <strong>2,000 artifact images</strong> and used data augmentation techniques (e.g., flipping, scaling, and brightness adjustments) to enhance model robustness.</p>
 <ul>
 <li>We trained two versions of the model: the original YOLOv8n and a reflection-enhanced version that uses images processed by the reflection removal model.</li>
@@ -288,6 +317,12 @@
 <li><strong>Automated Processing</strong>: Photos undergo both reflection removal and artifact identification.</li>
 <li><strong>Interactive Information Display</strong>: Detailed exhibit information is displayed, providing an enhanced visitor experience.</li>
 </ol>
+<p>  <img src="https://i.imgur.com/CjIMf58.png" srcset="/img/loading.gif" lazyload alt="Initial App Screen"><br>  <em>Initial app screen when opened</em></p>
+<p>  <img src="https://i.imgur.com/OXhtYho.png" srcset="/img/loading.gif" lazyload alt="Camera Ready"><br>  <em>Camera ready for capturing images</em></p>
+<p>  <img src="https://i.imgur.com/fQN3SoY.png" srcset="/img/loading.gif" lazyload alt="Processed Image Results"><br>  <em>Results after image processing</em></p>
+<h3 id="📷-Demo-Video"><a href="#📷-Demo-Video" class="headerlink" title="📷 Demo Video"></a>📷 Demo Video</h3><p>  Here is a demo video showcasing our project in action:</p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/dDO6zq5NAl0" frameborder="0" allowfullscreen></iframe>
+
 <h3 id="🚀-Benefits-amp-Real-World-Application"><a href="#🚀-Benefits-amp-Real-World-Application" class="headerlink" title="🚀 Benefits &amp; Real-World Application"></a>🚀 Benefits &amp; Real-World Application</h3><h4 id="Achievements-amp-Advantages"><a href="#Achievements-amp-Advantages" class="headerlink" title="Achievements &amp; Advantages"></a>Achievements &amp; Advantages</h4><ul>
 <li><strong>Reflection Removal</strong>: Improved artifact recognition in museums with glass display cases.</li>
 <li><strong>YOLO Multi-Object Detection</strong>: Accurate classification even for multiple artifacts in a single image.</li>
@@ -312,14 +347,14 @@
 <ol>
 <li><strong>玻璃反光</strong>：許多展品放置在玻璃展示櫃中，反光干擾會影響AI對文物的準確識別。</li>
 <li><strong>拍攝角度與位置</strong>：參觀者因位置或角度限制，無法拍攝完整展品影像，影響識別精度。</li>
-<li><strong>外在干擾因素</strong>：光線不足或背景雜亂等因素，增加了拍攝困難度並影響AI辨識效果。</li>
+<li><strong>外在干擾因素</strong>：光線不足或背景雜亂等因素，增加了拍攝難度並影響AI辨識效果。</li>
 </ol>
-<p>  針對這些挑戰，我們開發了一種AI系統，即便面對上述各種干擾（尤其是玻璃反光），依然能精確識別博物館展品。</p>
 <h3 id="✨-我們的解決方案"><a href="#✨-我們的解決方案" class="headerlink" title="✨ 我們的解決方案"></a>✨ 我們的解決方案</h3><h4 id="1-反光消除模型"><a href="#1-反光消除模型" class="headerlink" title="1. 反光消除模型"></a>1. 反光消除模型</h4><p>  <strong>背景</strong>：博物館展覽環境中的反光是展品識別的一大障礙。現有的開源反光消除模型無法應對展覽廳中複雜的照明和反射情況。為了解決這個問題：</p>
 <ul>
 <li>我們開發了一個能適應不同環境的反光消除模型。</li>
 <li>我們將反光消除任務設計為<strong>風格轉換</strong>，採用了<strong>Pix2pix GAN</strong>模型並加入了<strong>Sobel特徵</strong>，讓模型能更好地注意反光區域，有效去除反光並保留展品的關鍵細節。</li>
 </ul>
+<p>  <img src="https://i.imgur.com/9M682bu.png" srcset="/img/loading.gif" lazyload alt="原始 vs 消除反光"><br>  <em>比較：原始照片（上）與消除反光後的照片（下）</em></p>
 <h4 id="2-展品識別模型"><a href="#2-展品識別模型" class="headerlink" title="2. 展品識別模型"></a>2. 展品識別模型</h4><p>  為了在單張照片中識別出多個展品，我們採用了<strong>YOLOv8n</strong>模型，手動標註了<strong>2000張展品圖像</strong>，並使用數據增強技術（如翻轉、縮放、亮度調整等）以提高模型的穩健性。</p>
 <ul>
 <li>我們訓練了兩個版本的模型：一個是原始YOLOv8n，另一個是使用經過反光處理的圖像的改進版。</li>
@@ -345,6 +380,12 @@
 <li><strong>自動化處理</strong>：照片經過反光去除和展品識別的雙重處理。</li>
 <li><strong>互動資訊顯示</strong>：提供展品的詳細介紹，提升參觀體驗。</li>
 </ol>
+<p>  <img src="https://i.imgur.com/CjIMf58.png" srcset="/img/loading.gif" lazyload alt="初始界面"><br>  <em>應用啟動的初始界面</em></p>
+<p>  <img src="https://i.imgur.com/OXhtYho.png" srcset="/img/loading.gif" lazyload alt="相機準備拍攝"><br>  <em>相機準備拍攝</em></p>
+<p>  <img src="https://i.imgur.com/fQN3SoY.png" srcset="/img/loading.gif" lazyload alt="拍攝結果"><br>  <em>圖像處理後的結果</em></p>
+<h3 id="📷-影片演示"><a href="#📷-影片演示" class="headerlink" title="📷 影片演示"></a>📷 影片演示</h3><p>  這裡是我們專案的演示影片：</p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/dDO6zq5NAl0" frameborder="0" allowfullscreen></iframe>
+
 <h3 id="🚀-實際應用價值"><a href="#🚀-實際應用價值" class="headerlink" title="🚀 實際應用價值"></a>🚀 實際應用價值</h3><h4 id="成就與優勢"><a href="#成就與優勢" class="headerlink" title="成就與優勢"></a>成就與優勢</h4><ul>
 <li><strong>反光消除</strong>：有效改善了博物館中玻璃展示櫃對文物識別的影響。</li>
 <li><strong>YOLO多目標檢測</strong>：即使單張影像中有多個展品，也能準確分類。</li>
