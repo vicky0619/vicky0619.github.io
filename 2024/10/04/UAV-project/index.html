@@ -197,7 +197,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      496 字
+      1k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      13
        分钟
     </span>
   
@@ -305,6 +305,30 @@
 <blockquote>
 <p>減少點數的程式碼有了(vicky.cpp)<br>現在只要弄 <a target="_blank" rel="noopener" href="https://github.com/valeoai/POCO">POCO: Point Convolution for Surface Reconstruction</a> 找表面的程式碼</p>
 </blockquote>
+<h3 id="2024-10-15"><a href="#2024-10-15" class="headerlink" title="2024-10-15"></a>2024-10-15</h3><p><strong>進度更新：補洞與資料清理</strong></p>
+<h4 id="補洞進行方式："><a href="#補洞進行方式：" class="headerlink" title="補洞進行方式："></a><strong>補洞進行方式</strong>：</h4><ul>
+<li>使用 <strong>RANSAC (Random Sample Consensus)</strong> 偵測並排除點雲中的平面部分。<ul>
+<li>排除牆面上的點，模擬封閉門窗，避免無人機誤入室內。</li>
+<li>剩餘的點雲保留非平面區域（如邊緣與開口）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="操作步驟："><a href="#操作步驟：" class="headerlink" title="操作步驟："></a><strong>操作步驟</strong>：</h4><ol>
+<li>使用 <strong>RANSAC</strong> 移除主要平面點。</li>
+<li>保留非平面區域作為無人機飛行參考。</li>
+<li>接下來將進一步優化補洞，嘗試使用 <code>.las</code> 格式數據進行測試。</li>
+</ol>
+<hr>
+<h3 id="C-程式碼：RANSAC-補洞與過濾"><a href="#C-程式碼：RANSAC-補洞與過濾" class="headerlink" title="C++ 程式碼：RANSAC 補洞與過濾"></a><strong>C++ 程式碼：RANSAC 補洞與過濾</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pcl/io/pcd_io.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pcl/point_types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pcl/ModelCoefficients.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pcl/segmentation/sac_segmentation.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pcl/filters/extract_indices.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span>** argv)</span> </span>&#123;<br>    pcl::PointCloud&lt;pcl::PointXYZ&gt;::<span class="hljs-function">Ptr <span class="hljs-title">cloud</span><span class="hljs-params">(<span class="hljs-keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZ&gt;)</span></span>;<br><br>    <span class="hljs-comment">// 1. 匯入 PCD 檔案</span><br>    <span class="hljs-keyword">if</span> (pcl::io::loadPCDFile&lt;pcl::PointXYZ&gt;(<span class="hljs-string">&quot;../../data/Demonstration_10000.pcd&quot;</span>, *cloud) == <span class="hljs-number">-1</span>) &#123;<br>        <span class="hljs-built_in">PCL_ERROR</span>(<span class="hljs-string">&quot;Couldn&#x27;t read input.pcd \n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Loaded &quot;</span> &lt;&lt; cloud-&gt;points.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&quot; data points.&quot;</span> &lt;&lt; std::endl;<br><br>    <span class="hljs-comment">// 2. 使用 RANSAC 偵測平面</span><br>    pcl::<span class="hljs-function">ModelCoefficients::Ptr <span class="hljs-title">coefficients</span><span class="hljs-params">(<span class="hljs-keyword">new</span> pcl::ModelCoefficients)</span></span>;<br>    pcl::<span class="hljs-function">PointIndices::Ptr <span class="hljs-title">inliers</span><span class="hljs-params">(<span class="hljs-keyword">new</span> pcl::PointIndices)</span></span>;<br>    pcl::SACSegmentation&lt;pcl::PointXYZ&gt; seg;<br>    seg.<span class="hljs-built_in">setOptimizeCoefficients</span>(<span class="hljs-literal">true</span>);<br>    seg.<span class="hljs-built_in">setModelType</span>(pcl::SACMODEL_PLANE);<br>    seg.<span class="hljs-built_in">setMethodType</span>(pcl::SAC_RANSAC);<br>    seg.<span class="hljs-built_in">setDistanceThreshold</span>(<span class="hljs-number">0.01</span>);<br>    seg.<span class="hljs-built_in">setInputCloud</span>(cloud);<br>    seg.<span class="hljs-built_in">segment</span>(*inliers, *coefficients);<br><br>    <span class="hljs-keyword">if</span> (inliers-&gt;indices.<span class="hljs-built_in">empty</span>()) &#123;<br>        std::cerr &lt;&lt; <span class="hljs-string">&quot;No planar model found.&quot;</span> &lt;&lt; std::endl;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 3. 排除平面內部點</span><br>    pcl::ExtractIndices&lt;pcl::PointXYZ&gt; extract;<br>    extract.<span class="hljs-built_in">setInputCloud</span>(cloud);<br>    extract.<span class="hljs-built_in">setIndices</span>(inliers);<br>    extract.<span class="hljs-built_in">setNegative</span>(<span class="hljs-literal">true</span>);<br>    pcl::PointCloud&lt;pcl::PointXYZ&gt;::<span class="hljs-function">Ptr <span class="hljs-title">cloud_filtered</span><span class="hljs-params">(<span class="hljs-keyword">new</span> pcl::PointCloud&lt;pcl::PointXYZ&gt;)</span></span>;<br>    extract.<span class="hljs-built_in">filter</span>(*cloud_filtered);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Filtered cloud size: &quot;</span> &lt;&lt; cloud_filtered-&gt;points.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&quot; points.&quot;</span> &lt;&lt; std::endl;<br><br>    <span class="hljs-comment">// 4. 匯出處理後的 PCD 檔案</span><br>    pcl::io::<span class="hljs-built_in">savePCDFileASCII</span>(<span class="hljs-string">&quot;../filtered_output.pcd&quot;</span>, *cloud_filtered);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Saved filtered cloud to ../filtered_output.pcd&quot;</span> &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="程式碼功能說明："><a href="#程式碼功能說明：" class="headerlink" title="程式碼功能說明："></a><strong>程式碼功能說明：</strong></h3><ol>
+<li><strong>匯入 <code>.pcd</code> 檔案</strong>：載入要處理的點雲資料。</li>
+<li><strong>RANSAC 平面偵測</strong>：找出並標記平面內的點。</li>
+<li><strong>排除平面點</strong>：將平面上的點排除，保留非平面區域。</li>
+<li><strong>匯出處理結果</strong>：將過濾後的點雲儲存為 <code>filtered_output.pcd</code>。</li>
+</ol>
+<hr>
 
             </div>
             <hr>
