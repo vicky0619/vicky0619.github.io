@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/planefav.png">
+  <link rel="icon" href="/img/planefav.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="A retro-style food scanner that analyzes nutrients from photos or text input using Google Gemini AI.">
+  <meta name="author" content="Vicky">
+  <meta name="keywords" content="">
+  
+  <title>Nutrients Tracker - Vicky&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"vicky0619.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<script src="/js/hexo_resize_image.js"></script><body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Vicky's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                交換連結
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://i.imgur.com/noU0QRM.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Nutrients Tracker">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2025-04-10 23:35" pubdate>
+        2025年4月10日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      748 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Nutrients Tracker</h1>
+            
+            <div class="markdown-body">
+              <h1 id="NutriScan-🍔"><a href="#NutriScan-🍔" class="headerlink" title="NutriScan 🍔"></a>NutriScan 🍔</h1><p><strong>AI-Powered Retro Food Tracker | Gemini Vision-based Nutrition Analysis</strong></p>
+<h2 id="🌐-Live-Demo"><a href="#🌐-Live-Demo" class="headerlink" title="🌐 Live Demo"></a>🌐 Live Demo</h2><p>🔗 <a target="_blank" rel="noopener" href="https://nutriscan-woad.vercel.app/">nutriscan-vision.vercel.app</a><br><img src="https://i.imgur.com/noU0QRM.png" srcset="/img/loading.gif" lazyload alt="Website"></p>
+<hr>
+<h2 id="🥗-Project-Overview"><a href="#🥗-Project-Overview" class="headerlink" title="🥗 Project Overview"></a>🥗 Project Overview</h2><p><strong>NutriScan</strong> is a retro-style food tracking web app powered by Google Gemini AI. Users can either <strong>upload a food photo</strong>, <strong>take one via webcam</strong>, or <strong>enter a food description</strong>, and the app will intelligently estimate <strong>calories</strong>, <strong>protein</strong>, <strong>carbs</strong>, and <strong>fat</strong> content. Each result can be saved to a <strong>daily food diary</strong>, all within a nostalgic pixel-art interface.</p>
+<hr>
+<h2 id="✨-Features"><a href="#✨-Features" class="headerlink" title="✨ Features"></a>✨ Features</h2><ul>
+<li>📷 <strong>Image Analysis</strong>: Uses Gemini Pro Vision to analyze food photos  </li>
+<li>✍️ <strong>Text Analysis</strong>: Instantly analyzes nutrition from food descriptions  </li>
+<li>💾 <strong>Food Diary</strong>: Tracks and summarizes daily nutrient intake  </li>
+<li>🕹️ <strong>Retro UI</strong>: 8-bit pixel design inspired by old-school consoles</li>
+</ul>
+<hr>
+<h2 id="🚀-Getting-Started"><a href="#🚀-Getting-Started" class="headerlink" title="🚀 Getting Started"></a>🚀 Getting Started</h2><h3 id="1-Clone-this-repo"><a href="#1-Clone-this-repo" class="headerlink" title="1. Clone this repo"></a>1. Clone this repo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/vicky0619/nutriscan.git<br><span class="hljs-built_in">cd</span> nutriscan<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-Set-up-environment-variable"><a href="#2-Set-up-environment-variable" class="headerlink" title="2. Set up environment variable"></a>2. Set up environment variable</h3><p>Create a <code>.env</code> file in the root directory:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs env">GEMINI_API_KEY=your_gemini_api_key<br></code></pre></td></tr></table></figure>
+
+<p>Make sure your <code>.gitignore</code> includes:</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-title">.env</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Deploy-with-Vercel"><a href="#3-Deploy-with-Vercel" class="headerlink" title="3. Deploy with Vercel"></a>3. Deploy with Vercel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vercel<br></code></pre></td></tr></table></figure>
+
+<p>Or connect your GitHub repo directly to <a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a>.</p>
+<hr>
+<h2 id="📁-Project-Structure"><a href="#📁-Project-Structure" class="headerlink" title="📁 Project Structure"></a>📁 Project Structure</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs axapta">nutriscan/<br>├── api/<br>│   └── analyze.js      <span class="hljs-meta"># Gemini text/image API integration</span><br>├── <span class="hljs-keyword">index</span>.html          <span class="hljs-meta"># Main UI with Tailwind and pixel styles</span><br>├── <span class="hljs-keyword">public</span>/             <span class="hljs-meta"># Static assets</span><br>└── .env                <span class="hljs-meta"># Local API key (never pushed)</span><br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="📸-How-to-Use"><a href="#📸-How-to-Use" class="headerlink" title="📸 How to Use"></a>📸 How to Use</h2><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>How to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Take photo</td>
+<td>Click “Take Photo” → Capture → Confirm</td>
+</tr>
+<tr>
+<td>Upload image</td>
+<td>Click “Upload Image” → Select file</td>
+</tr>
+<tr>
+<td>Type manually</td>
+<td>Type description (e.g., <code>cheeseburger</code>) → Click ✈️</td>
+</tr>
+<tr>
+<td>View diary</td>
+<td>Click “Nutrition Diary” tab</td>
+</tr>
+<tr>
+<td>View history</td>
+<td>Click “History” → Use search</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧪-Sample-Inputs"><a href="#🧪-Sample-Inputs" class="headerlink" title="🧪 Sample Inputs"></a>🧪 Sample Inputs</h2><p>Try entering:</p>
+<ul>
+<li><code>fried chicken with rice</code></li>
+<li><code>avocado toast with egg</code></li>
+<li><code>牛肉炒飯</code></li>
+<li><code>鮪魚沙拉三明治</code></li>
+</ul>
+<hr>
+<h2 id="🔒-Security"><a href="#🔒-Security" class="headerlink" title="🔒 Security"></a>🔒 Security</h2><ul>
+<li>API key is stored in <code>.env</code> and never exposed to the client</li>
+<li>Food diary is saved in <code>localStorage</code> (client only)</li>
+</ul>
+<hr>
+<h2 id="💡-Future-Plans"><a href="#💡-Future-Plans" class="headerlink" title="💡 Future Plans"></a>💡 Future Plans</h2><ul>
+<li><input disabled="" type="checkbox"> Connect to Firebase/Supabase for cloud diary storage  </li>
+<li><input disabled="" type="checkbox"> Daily nutrition goal tracking  </li>
+<li><input disabled="" type="checkbox"> Voice command support</li>
+</ul>
+<hr>
+<h2 id="🙌-Author"><a href="#🙌-Author" class="headerlink" title="🙌 Author"></a>🙌 Author</h2><p>Made with ❤️ by <a target="_blank" rel="noopener" href="https://github.com/vicky0619">@vicky0619</a><br>Gemini integration by ChatGPT 💬</p>
+<hr>
+<h2 id="📝-License"><a href="#📝-License" class="headerlink" title="📝 License"></a>📝 License</h2><p>MIT License</p>
+<hr>
+<h1 id="NutriScan-🍔-1"><a href="#NutriScan-🍔-1" class="headerlink" title="NutriScan 🍔"></a>NutriScan 🍔</h1><p><strong>支援圖片與文字輸入的 AI 食物營養分析器｜復古像素風界面</strong></p>
+<hr>
+<h2 id="🥗-專案簡介"><a href="#🥗-專案簡介" class="headerlink" title="🥗 專案簡介"></a>🥗 專案簡介</h2><p>NutriScan 是一款整合 Google Gemini AI 的食物分析工具。使用者可透過拍照、上傳圖片或文字描述，即可快速分析食物的 <strong>熱量、蛋白質、碳水化合物、脂肪</strong> 含量，並記錄於每日飲食日記中。整體風格走懷舊 8-bit 像素路線，功能實用又有趣！</p>
+<hr>
+<h2 id="✨-功能亮點"><a href="#✨-功能亮點" class="headerlink" title="✨ 功能亮點"></a>✨ 功能亮點</h2><ul>
+<li>📷 <strong>圖片分析</strong>：使用 Gemini Vision 分析食物照片  </li>
+<li>✍️ <strong>文字分析</strong>：輸入描述，AI 即時分析營養成分  </li>
+<li>💾 <strong>日記記錄</strong>：每日累積並查看攝取總量  </li>
+<li>🕹️ <strong>復古 UI</strong>：經典 80s 像素風格，超有感</li>
+</ul>
+<hr>
+<h2 id="🚀-開始使用"><a href="#🚀-開始使用" class="headerlink" title="🚀 開始使用"></a>🚀 開始使用</h2><h3 id="1-複製專案"><a href="#1-複製專案" class="headerlink" title="1. 複製專案"></a>1. 複製專案</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/vicky0619/nutriscan.git<br><span class="hljs-built_in">cd</span> nutriscan<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-設定環境變數-env"><a href="#2-設定環境變數-env" class="headerlink" title="2. 設定環境變數 .env"></a>2. 設定環境變數 <code>.env</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs env">GEMINI_API_KEY=你的 Gemini API 金鑰<br></code></pre></td></tr></table></figure>
+
+<p><code>.gitignore</code> 請記得加入 <code>.env</code> 防止外洩。</p>
+<hr>
+<h3 id="3-部署到-Vercel"><a href="#3-部署到-Vercel" class="headerlink" title="3. 部署到 Vercel"></a>3. 部署到 Vercel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vercel<br></code></pre></td></tr></table></figure>
+
+<p>或將 GitHub 專案直接連接 Vercel 也可以。</p>
+<hr>
+<h2 id="📁-專案結構說明"><a href="#📁-專案結構說明" class="headerlink" title="📁 專案結構說明"></a>📁 專案結構說明</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs axapta">nutriscan/<br>├── api/<br>│   └── analyze.js      <span class="hljs-meta"># Gemini API（支援圖片與文字）</span><br>├── <span class="hljs-keyword">index</span>.html          <span class="hljs-meta"># 主畫面（Tailwind + 像素風）</span><br>└── .env                <span class="hljs-meta"># API 金鑰（不會上傳）</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📸-使用方式"><a href="#📸-使用方式" class="headerlink" title="📸 使用方式"></a>📸 使用方式</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>操作方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>拍照分析</td>
+<td>點擊「Take Photo」→ 拍照 → 確認 → 分析</td>
+</tr>
+<tr>
+<td>上傳圖片</td>
+<td>點擊「Upload Image」→ 選圖 → 自動分析</td>
+</tr>
+<tr>
+<td>手動輸入</td>
+<td>輸入描述（如 <code>漢堡加蛋</code>）→ 點紙飛機按鈕送出</td>
+</tr>
+<tr>
+<td>查看日記</td>
+<td>點選上方「Nutrition Diary」分頁</td>
+</tr>
+<tr>
+<td>查看紀錄</td>
+<td>點選「History」分頁，可搜尋</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧪-範例輸入推薦"><a href="#🧪-範例輸入推薦" class="headerlink" title="🧪 範例輸入推薦"></a>🧪 範例輸入推薦</h2><ul>
+<li><code>炒飯加煎蛋</code></li>
+<li><code>beef with noodles</code></li>
+<li><code>tuna and salad</code></li>
+<li><code>熱狗與薯條</code></li>
+</ul>
+<hr>
+<h2 id="🛡️-安全性"><a href="#🛡️-安全性" class="headerlink" title="🛡️ 安全性"></a>🛡️ 安全性</h2><ul>
+<li>所有 API 金鑰僅儲存於伺服器端 <code>.env</code></li>
+<li>資料不會上傳至後台，皆保存在瀏覽器 <code>localStorage</code></li>
+</ul>
+<hr>
+<h2 id="💡-待辦與未來功能"><a href="#💡-待辦與未來功能" class="headerlink" title="💡 待辦與未來功能"></a>💡 待辦與未來功能</h2><ul>
+<li><input disabled="" type="checkbox"> 接 Firebase 儲存資料庫  </li>
+<li><input disabled="" type="checkbox"> 加入每日攝取目標與建議  </li>
+<li><input disabled="" type="checkbox"> 語音辨識輸入功能</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Projects/">Projects</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Projects/AI-Applications/">AI Applications</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/AI/">AI</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Nutrition/">Nutrition</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Gemini/">Gemini</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Food-Recognition/">Food Recognition</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Web-App/">Web App</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用<atarget="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/21/Personalized-Nutrition-Assistant/">
+                        <span class="hidden-mobile">Personalized Nutrition Assistant Data-Driven Recipe Recommendations</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/js/hexo_resize_image.js"></script></body>
+</html>
