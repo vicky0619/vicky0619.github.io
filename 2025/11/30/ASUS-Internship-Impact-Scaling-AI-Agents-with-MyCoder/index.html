@@ -259,7 +259,7 @@
 <li> <strong>Scalability:</strong> As the product grows, the backlog grows linearly, but the team size doesn’t.</li>
 </ol>
 <h2 id="The-Solution-A-Governed-AI-Agent"><a href="#The-Solution-A-Governed-AI-Agent" class="headerlink" title="The Solution: A Governed AI Agent"></a>The Solution: A Governed AI Agent</h2><p>We didn’t just want a chatbot; we needed an <strong>Agent</strong>.<br>Using <strong>MyCoder</strong> (our internal VS Code extension based AI assistant), we implemented a solution that automates the entire lifecycle of issue triage.</p>
-<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_Manual.jpg" srcset="/img/loading.gif" lazyload alt="Manual"><br><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_AIWorkflow.png" srcset="/img/loading.gif" lazyload alt="AI Workflow"></p>
+<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_Manual.jpg?raw=true" srcset="/img/loading.gif" lazyload alt="Manual"><br><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_AIWorkflow.png?raw=true" srcset="/img/loading.gif" lazyload alt="AI Workflow"></p>
 <h3 id="1-The-“Golden-Rule”-of-Reliability"><a href="#1-The-“Golden-Rule”-of-Reliability" class="headerlink" title="1. The “Golden Rule” of Reliability"></a>1. The “Golden Rule” of Reliability</h3><p>A common mistake in GenAI adoption is treating the LLM like a chat partner.</p>
 <blockquote>
 <p><em>Wrong approach: “Hey AI, do you think this issue is urgent?”</em></p>
@@ -271,7 +271,7 @@
 <li><strong>Frequency Analysis:</strong> AI extracts occurrence rates (Always, Sometimes, Rarely).</li>
 <li><strong>Priority Matrix:</strong> <code>Severity x Frequency = Priority</code>.</li>
 </ul>
-<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_golden_rule.png" srcset="/img/loading.gif" lazyload alt="The Golden Rule Formula"></p>
+<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_golden_rule.png?raw=true" srcset="/img/loading.gif" lazyload alt="The Golden Rule Formula"></p>
 <h3 id="2-Bridging-the-Gap-with-MCP-Model-Context-Protocol"><a href="#2-Bridging-the-Gap-with-MCP-Model-Context-Protocol" class="headerlink" title="2. Bridging the Gap with MCP (Model Context Protocol)"></a>2. Bridging the Gap with MCP (Model Context Protocol)</h3><p>The real magic happens when the AI can “act.”<br>We leveraged <strong>GitLab MCP</strong> to connect MyCoder directly to our DevOps infrastructure. This transforms the AI from a passive reader into an active participant.</p>
 <p>The workflow looks like this:</p>
 <ol>
@@ -280,7 +280,7 @@
 <li> <strong>Act:</strong> MyCoder calls <code>gitlab_update_issue</code> to apply the correct <code>Priority</code> label automatically.</li>
 </ol>
 <p>No copy-pasting. No context switching. Just pure automation.</p>
-<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_mcp_architecture.png" srcset="/img/loading.gif" lazyload alt="MCP Workflow Diagram"></p>
+<p><img src="https://github.com/vicky0619/vicky0619.github.io/blob/master/img/slide_mcp_architecture.png?raw=true" srcset="/img/loading.gif" lazyload alt="MCP Workflow Diagram"></p>
 <h2 id="Key-Takeaways-Governance-is-Key"><a href="#Key-Takeaways-Governance-is-Key" class="headerlink" title="Key Takeaways: Governance is Key"></a>Key Takeaways: Governance is Key</h2><p>The success of this implementation wasn’t just about the code; it was about <strong>Governance</strong>. By standardizing how we prompt and verify AI outputs, we achieved:</p>
 <ul>
 <li><strong>100% Consistency:</strong> The same input always yields the same priority.</li>
