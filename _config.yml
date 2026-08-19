@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------------
+# Site settings
+# ---------------------------------------------------------------------------
+title: "Wen-Chi (Vicky) Tsai"
+description: >-
+  Wen-Chi (Vicky) Tsai. M.S. student in Intelligent Information Systems at
+  Carnegie Mellon University's Language Technologies Institute. Software
+  engineering, AI developer tools, and workflow automation.
+url: "https://vicky0619.github.io"
+
+# The subpath of your site. Empty because this deploys to the user repo
+# (github.com/vicky0619/vicky0619.github.io) and serves from the root URL.
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-email-protect
+
+collections:
+  - publications
+  - news
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - README.md

@@ -1,0 +1,12 @@
+# `name` must match the `navbar_title` in each page's front matter so the
+# active tab is highlighted. Set `external: true` for off-site links.
+pages:
+- name: Home
+  url: /
+- name: Experience
+  url: /experience
+- name: Publications
+  url: /publications
+- name: Blog
+  url: https://vicky0619.github.io/blog/
+  external: true

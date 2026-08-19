@@ -1,0 +1,38 @@
+---
+layout: default
+title : Experience & Projects
+navbar_title: Experience
+---
+
+<div class="row">
+    <div class="col-12 col-lg-10">
+
+        <h2 class="pt-4">Work Experience</h2>
+        {% for item in site.data.cv.work %}
+            {% include widgets/cv_entry.html item=item %}
+        {% endfor %}
+
+        <h2 class="pt-4">Selected Projects</h2>
+        {% for item in site.data.cv.projects %}
+            {% include widgets/cv_entry.html item=item %}
+        {% endfor %}
+
+        <div class="card border-0 shadow-sm bg-white mb-5">
+            <div class="card-body p-4 text-center">
+                <div class="mb-2 text-muted small">
+                    Everything above is on one page, in ATS-friendly form, in my resume.
+                </div>
+                <a class="btn btn-sm btn-outline-dark" target="_blank" href="{{ site.data.profile.cv_link | relative_url }}">
+                    <i class="fas fa-file-alt"></i> Download resume (PDF)
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-2 d-none d-lg-block">
+        <div class="nav nav-pills flex-column sticky-top" style="top: 80px">
+            <a class="nav-link d-block" href="#">Top</a>
+        </div>
+    </div>
+</div>

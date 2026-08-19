@@ -1,0 +1,92 @@
+# Roles and projects rendered by experience.html.
+#
+# Fields: title, org, dept, location, date, logo, tags, bullets (HTML allowed).
+# `note` replaces the org line for entries that have no organisation.
+
+work:
+- title: Software Engineering Intern
+  org: ASUS
+  dept: Open Cloud Infrastructure Software R&D Team
+  location: Taipei, Taiwan
+  date: Jun. 2025 - Mar. 2026
+  logo: /assets/images/badges/asus.png
+  tags: [TypeScript, End-to-End Testing, MCP, LLM Tooling, VS Code, Docusaurus]
+  bullets:
+  - >-
+    Cut a full regression pass from <strong>~16 hours to ~1-2 hours</strong> with a
+    <strong>TypeScript end-to-end (E2E) test suite</strong> covering ~95% of previously manual cases
+    across Linux, Windows, and macOS.
+  - >-
+    Automated issue triage with a <strong>GitLab Model Context Protocol (MCP) agent</strong>, pairing an
+    LLM classification prompt with MCP tool calls to auto-classify, label, and route issues.
+  - >-
+    Shipped four <strong>context providers into a VS Code AI coding assistant</strong>, adding
+    commit-history, OS-metadata, current-file, and repository-map context selected from an evaluation
+    of candidates.
+  - >-
+    Cut hands-on onboarding support by authoring the assistant's <strong>Docusaurus documentation site</strong>.
+
+- title: Startup Engineer
+  org: RoomMuse
+  location: Pittsburgh, PA
+  date: Jun. 2026 - Aug. 2026
+  logo: /assets/images/badges/roommuse.png
+  cover: /assets/images/covers/roommuse.png
+  tags: [Swift, RealityKit, AR, Computational Geometry, Classical CV]
+  bullets:
+  - >-
+    Caught unbuildable layouts at design time rather than on install day with a
+    <strong>six-rule geometric conflict engine</strong> that blocks any unit sealing a socket, pipe, or
+    doorway while passing intended connections (<strong>45 tests</strong>).
+  - >-
+    Removed manual fixture surveying by localizing sockets from the same <strong>Swift and RealityKit</strong>
+    scan with a <strong>classical-CV pipeline</strong> (thresholding, connected components, NMS) that
+    ray-casts detections onto wall planes.
+
+- title: Research Assistant, Edge LLM Compression
+  org: Wireless Ad-Hoc and Sensor Networks Laboratory, NCU
+  location: Taoyuan, Taiwan
+  date: Sep. 2025 - Feb. 2026
+  logo: /assets/images/badges/wasn.png
+  cover: /assets/images/covers/llm-compression.png
+  tags: [PyTorch, GPTQ, Knowledge Distillation, DeepSpeed, Edge Deployment]
+  bullets:
+  - >-
+    Sharded teacher-student distillation across 3 GPUs with <strong>DeepSpeed ZeRO-2</strong>, splitting
+    optimizer state and gradients, since <strong>ZeRO-3 sharding corrupts GPTQ-packed quantized weights</strong>.
+  - >-
+    Recovered <strong>4-bit accuracy at 2-bit model size</strong> (IoU 0.9998, 1.18 GB) by fine-tuning a
+    Llama-3.2 student with <strong>GPTQ quantization and LLM-Neo knowledge distillation</strong> in PyTorch.
+  - >-
+    Surveyed <strong>llama.cpp, vLLM, and SGLang</strong> for edge deployment, mapping
+    <strong>latency versus throughput</strong> across PagedAttention, continuous batching, and prefix-cache reuse.
+
+projects:
+- title: Dual-Strategy UAV Path Planning
+  date: Sep. 2024 - Dec. 2025
+  note: First-author paper at Ubi-Media 2026
+  tags: [C++, Python, Point Clouds, Path Planning, AirSim]
+  bullets:
+  - >-
+    Designed a dual-strategy planner trading <strong>layered MST-DFS</strong> for structured-space traversal
+    against <strong>collision-aware A* replanning</strong>, cutting path-generation time over
+    <strong>5&times;</strong> and path length up to <strong>14%</strong>.
+  - >-
+    Built the <strong>3D point-cloud pipeline in C++ and Python</strong>, slicing raw .pcd scans into layers
+    and chaining <strong>per-layer KNN and MST</strong> into a DFS traversal, with normal-vector correction
+    for full coverage.
+  - >-
+    Validated <strong>100% collision-free operation in AirSim</strong> against a random-order baseline on
+    real-world building models.
+
+- title: Museum Artifact Recognition App
+  date: May 2024 - Nov. 2024
+  cover: /assets/images/covers/museum.jpg
+  tags: [Swift, TensorFlow Lite, On-Device Inference, iOS, AWS EC2]
+  bullets:
+  - >-
+    Shipped <strong>on-device model inference in an iOS app</strong>, running the team's YOLOv8n and Pix2Pix
+    reflection-removal models in <strong>Swift with TensorFlow Lite</strong> at 94.5% accuracy across 7 classes.
+  - >-
+    Integrated the iOS client with the team's <strong>AWS EC2 REST inference API</strong>, adding a cloud path
+    for multi-user recognition.

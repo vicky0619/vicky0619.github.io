@@ -1,0 +1,75 @@
+primary_name: "Wen-Chi (Vicky) Tsai"
+secondary_name: ""
+navbar_name: "Vicky Tsai"
+
+positions:
+- name: M.S. in Intelligent Information Systems
+- name: Language Technologies Institute, Carnegie Mellon University
+  logo: /assets/images/badges/cmu.png
+
+email: "vickytsa@andrew.cmu.edu"
+cv_link: /assets/files/Wen-Chi_Tsai_Resume.pdf
+github: vicky0619
+linkedin: wen-chi-tsai
+# gscholar: YOUR_ID          # uncomment once you have a Google Scholar profile
+# twitter: your_twitter_id
+# orcid: 0000-0000-0000-0000
+
+short_bio_text_justify: false
+short_bio: >-
+  <p>
+    I am a master's student in <strong>Intelligent Information Systems</strong> at Carnegie Mellon University's
+    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a>, graduating in
+    <strong>December 2027</strong>. Before CMU I earned my B.S. in Computer Science and Information Engineering
+    from National Central University, Taiwan.
+  </p>
+  <p>
+    I build <strong>AI developer tools and workflow automation</strong>, on top of an applied-AI, mobile, and
+    algorithms/systems foundation. Recently that has meant a TypeScript end-to-end test suite and an MCP-based
+    issue-triage agent at <strong>ASUS</strong>, a geometric conflict engine and classical-CV pipeline for AR room
+    scans at <strong>RoomMuse</strong>, and quantization-aware distillation of edge LLMs at NCU's
+    <strong>Wireless Ad-Hoc and Sensor Networks Lab</strong>.
+  </p>
+  <p>
+    <strong>I am looking for Summer 2027 software engineering internships</strong> in developer tooling,
+    infrastructure and automation, and applied AI.
+  </p>
+
+portrait_url: /assets/images/photos/portrait.jpg
+# portrait_caption: >-
+#   Optional caption under the portrait.
+
+education:
+- name: Carnegie Mellon University
+  logo: /assets/images/badges/cmu.png
+  position: >-
+    School of Computer Science, Language Technologies Institute <br/>
+    M.S. in Intelligent Information Systems
+  date: Aug. 2026 - Dec. 2027 (expected)
+- name: National Central University
+  logo: /assets/images/badges/ncu.png
+  position: >-
+    B.S. in Computer Science and Information Engineering <br/>
+    GPA 3.99 / 4.30
+  date: Sep. 2022 - Jun. 2026
+
+experience:
+- name: ASUS
+  logo: /assets/images/badges/asus.png
+  position: >-
+    Open Cloud Infrastructure Software R&amp;D <br/>
+    Software Engineering Intern
+  date: Jun. 2025 - Mar. 2026
+- name: RoomMuse
+  logo: /assets/images/badges/roommuse.png
+  position: Startup Engineer
+  date: Jun. 2026 - Aug. 2026
+- name: Wireless Ad-Hoc and Sensor Networks Lab, NCU
+  logo: /assets/images/badges/wasn.png
+  position: Research Assistant, Edge LLM Compression
+  date: Sep. 2025 - Feb. 2026
+
+# Uncomment to add an Honors & Awards column to the homepage card.
+# awards:
+# - name: Award name
+#   date: 2025

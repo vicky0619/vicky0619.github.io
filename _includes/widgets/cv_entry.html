@@ -1,0 +1,47 @@
+{% assign item = include.item %}
+<div class="card border-0 shadow-sm bg-white mb-3">
+    <div class="card-body p-4">
+        <div class="media">
+            {% if item.logo %}
+            <img src="{{ item.logo | relative_url }}" alt="{{ item.org }}" class="mr-3 mt-1" style="width: 34px; height: 34px;">
+            {% endif %}
+            <div class="media-body">
+                <div class="d-flex flex-wrap align-items-baseline">
+                    <h5 class="mb-1 mr-3">{{ item.title }}</h5>
+                    <div class="ml-auto text-muted small no-break"><em>{{ item.date }}</em></div>
+                </div>
+
+                {% if item.org %}
+                <div class="mb-1">
+                    <strong>{{ item.org }}</strong>{% if item.location %}<span class="text-muted small"> &middot; {{ item.location }}</span>{% endif %}
+                    {% if item.dept %}<div class="small text-muted">{{ item.dept }}</div>{% endif %}
+                </div>
+                {% elsif item.note %}
+                <div class="small text-muted mb-1">{{ item.note }}</div>
+                {% endif %}
+
+                {% if item.tags %}
+                <div class="mb-2">
+                    {% for tag in item.tags %}
+                    <span class="badge badge-light border mr-1 mb-1 font-weight-normal">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <ul class="mb-0 pl-3 text-profile-bio">
+                    {% for b in item.bullets %}
+                    <li class="mb-1">{{ b }}</li>
+                    {% endfor %}
+                </ul>
+
+                {% if item.links %}
+                <div class="mt-2 small">
+                    {% for link in item.links %}
+                    <a class="mr-3" target="_blank" href="{{ link[1] }}"><i class="fas fa-external-link-alt"></i> {{ link[0] }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
