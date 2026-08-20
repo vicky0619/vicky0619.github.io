@@ -64,7 +64,7 @@ work:
 projects:
 - title: Dual-Strategy UAV Path Planning
   date: Sep. 2024 - Dec. 2025
-  note: First-author paper at Ubi-Media 2026
+  note: 'First-author paper, <a href="https://link.springer.com/chapter/10.1007/978-981-95-9843-4_21" target="_blank">Ubi-Media 2026</a> (Springer CCIS vol. 2940)'
   tags: [C++, Python, Point Clouds, Path Planning, AirSim]
   bullets:
   - >-
