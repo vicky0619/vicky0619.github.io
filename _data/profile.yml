@@ -68,6 +68,14 @@ experience:
   logo: /assets/images/badges/wasn.png
   position: Research Assistant, Edge LLM Compression
   date: Sep. 2025 - Feb. 2026
+- name: AI POST
+  logo: /assets/images/badges/aipost.png
+  position: AI Technical Writer and Educator
+  date: Apr. 2025 - Dec. 2025
+- name: NCU College of Hakka Studies
+  logo: /assets/images/badges/ncu.png
+  position: Frontend Engineer
+  date: Aug. 2024 - Jun. 2026
 
 # Uncomment to add an Honors & Awards column to the homepage card.
 # awards:

@@ -61,6 +61,34 @@ work:
     Surveyed <strong>llama.cpp, vLLM, and SGLang</strong> for edge deployment, mapping
     <strong>latency versus throughput</strong> across PagedAttention, continuous batching, and prefix-cache reuse.
 
+- title: AI Technical Writer and Educator
+  org: AI POST
+  location: Remote
+  date: Apr. 2025 - Dec. 2025
+  logo: /assets/images/badges/aipost.png
+  tags: [Technical Writing, AI Coding Workflows, Developer Education, Course Design]
+  bullets:
+  - >-
+    Authored the <strong>Vibe Coding column</strong>, translating AI coding workflows into hands-on
+    tutorials that reached <strong>50K+ readers</strong> and drove <strong>42% platform content growth</strong>.
+  - >-
+    Designed and taught an <strong>AI-workflow course</strong>, plus the Her Path in Tech and
+    Vibe Coding workshops, each reaching <strong>200+ participants</strong>.
+
+- title: Frontend Engineer
+  org: NCU College of Hakka Studies
+  location: Taoyuan, Taiwan
+  date: Aug. 2024 - Jun. 2026
+  logo: /assets/images/badges/ncu.png
+  tags: [Frontend, Web Performance, Accessibility, Security]
+  bullets:
+  - >-
+    Lifted mobile <strong>Core Web Vitals from 61% to 86%</strong> for <strong>8,000+ monthly
+    visitors</strong>, meeting <strong>WCAG 2.1 AA</strong> accessibility on a production site.
+  - >-
+    Remediated <strong>17 security vulnerabilities</strong> across the codebase using automated
+    review and scanning.
+
 projects:
 - title: Dual-Strategy UAV Path Planning
   date: Sep. 2024 - Dec. 2025
