@@ -47,7 +47,7 @@ work:
   org: Wireless Ad-Hoc and Sensor Networks Laboratory, NCU
   location: Taoyuan, Taiwan
   date: Sep. 2025 - Feb. 2026
-  logo: /assets/images/badges/wasn.png
+  logo: /assets/images/badges/ncu.png
   cover: /assets/images/covers/llm-compression.png
   tags: [PyTorch, GPTQ, Knowledge Distillation, DeepSpeed, Edge Deployment]
   bullets:

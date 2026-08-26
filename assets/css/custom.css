@@ -1,0 +1,63 @@
+/* ---------------------------------------------------------------------------
+   Site-specific overrides. Loaded after global.css, so anything here wins.
+   Keep template files untouched and put personal tweaks in this file.
+   --------------------------------------------------------------------------- */
+
+/* Base type: the template runs a little small and tight for long-form bullets. */
+body {
+    font-size: 1.02rem;
+    line-height: 1.6;
+}
+
+/* Bio and bullet copy: the main reading surface. */
+.text-profile-bio {
+    font-size: 1.02rem;
+    line-height: 1.65;
+}
+
+.text-profile-bio p {
+    margin-bottom: 0.9rem;
+}
+
+.text-profile-bio ul li {
+    margin-bottom: 0.45rem;
+}
+
+/* Bootstrap's .small is used for a lot of real content in this template
+   (dates, departments, publication metadata), so lift it off the floor. */
+.small, small {
+    font-size: 0.9rem;
+}
+
+/* Breathing room between cards. */
+.card {
+    margin-bottom: 0.25rem;
+}
+
+.card-body {
+    padding: 1.6rem !important;
+}
+
+/* Section headings on the Experience / Publications pages. */
+h2 {
+    margin-top: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Education / Experience summary rows on the homepage. */
+.media + .media,
+ul.list-unstyled > li.media + li.media {
+    margin-top: 0.7rem !important;
+}
+
+/* Tech tags: slightly larger, a touch more padding. */
+.badge {
+    font-size: 0.8rem;
+    padding: 0.35em 0.6em;
+    font-weight: 400;
+}
+
+/* Portrait: soften the corners so it matches the card radius. */
+.figure-img {
+    border-radius: 0.6rem;
+}

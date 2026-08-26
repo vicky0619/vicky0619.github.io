@@ -42,38 +42,37 @@ portrait_url: /assets/images/photos/portrait.jpg
 education:
 - name: Carnegie Mellon University
   logo: /assets/images/badges/cmu.png
-  position: >-
-    School of Computer Science, Language Technologies Institute <br/>
-    M.S. in Intelligent Information Systems
-  date: Aug. 2026 - Dec. 2027 (expected)
+  dept: School of Computer Science, Language Technologies Institute
+  position: M.S. in Intelligent Information Systems
+  date: Aug. 2026 - Dec. 2027
 - name: National Central University
   logo: /assets/images/badges/ncu.png
-  position: >-
-    B.S. in Computer Science and Information Engineering <br/>
-    GPA 3.99 / 4.30
+  dept: Computer Science and Information Engineering
+  position: B.S., GPA 3.99 / 4.30
   date: Sep. 2022 - Jun. 2026
 
 experience:
 - name: ASUS
   logo: /assets/images/badges/asus.png
-  position: >-
-    Open Cloud Infrastructure Software R&amp;D <br/>
-    Software Engineering Intern
+  dept: Open Cloud Infrastructure Software R&amp;D
+  position: Software Engineering Intern
   date: Jun. 2025 - Mar. 2026
 - name: RoomMuse
   logo: /assets/images/badges/roommuse.png
   position: Startup Engineer
   date: Jun. 2026 - Aug. 2026
-- name: Wireless Ad-Hoc and Sensor Networks Lab, NCU
-  logo: /assets/images/badges/wasn.png
+- name: National Central University
+  logo: /assets/images/badges/ncu.png
+  dept: Wireless Ad-Hoc and Sensor Networks Lab
   position: Research Assistant, Edge LLM Compression
   date: Sep. 2025 - Feb. 2026
 - name: AI POST
   logo: /assets/images/badges/aipost.png
   position: AI Technical Writer and Educator
   date: Apr. 2025 - Dec. 2025
-- name: NCU College of Hakka Studies
+- name: National Central University
   logo: /assets/images/badges/ncu.png
+  dept: College of Hakka Studies
   position: Frontend Engineer
   date: Aug. 2024 - Jun. 2026
 
