@@ -30,7 +30,7 @@ work:
   org: RoomMuse
   location: Pittsburgh, PA
   date: Jun. 2026 - Aug. 2026
-  logo: /assets/images/badges/roommuse.png
+  logo: /assets/images/badges/roommuse.svg
   cover: /assets/images/covers/roommuse.png
   tags: [Swift, RealityKit, AR, Computational Geometry, Classical CV]
   bullets:
@@ -47,7 +47,7 @@ work:
   org: Wireless Ad-Hoc and Sensor Networks Laboratory, NCU
   location: Taoyuan, Taiwan
   date: Sep. 2025 - Feb. 2026
-  logo: /assets/images/badges/ncu.png
+  logo: /assets/images/badges/wasn.png
   cover: /assets/images/covers/llm-compression.png
   tags: [PyTorch, GPTQ, Knowledge Distillation, DeepSpeed, Edge Deployment]
   bullets:

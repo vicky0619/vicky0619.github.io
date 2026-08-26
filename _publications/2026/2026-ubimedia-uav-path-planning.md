@@ -4,6 +4,7 @@ date:           2026-05-01 00:00:00 +0800
 selected:       true
 pub:            "Ubi-Media Computing, Pervasive Systems, Algorithms and Networks (Ubi-Media 2026)"
 pub_date:       "2026"
+cover:          https://media.springernature.com/full/springer-static/image/chp%3A10.1007%2F978-981-95-9843-4_21/MediaObjects/681493_1_En_21_Fig1_HTML.png?as=webp
 pub_last:       "Communications in Computer and Information Science, vol. 2940, pp. 242-259"
 abstract: >-
   A dual-strategy planner for autonomous inspection of building structures: layered MST-DFS for
