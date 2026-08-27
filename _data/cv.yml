@@ -4,6 +4,21 @@
 # `note` replaces the org line for entries that have no organisation.
 
 work:
+- title: Graduate Researcher
+  org: >-
+    <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>, Carnegie Mellon University
+  dept: >-
+    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a> &middot;
+    Directed study advised by <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>
+    and <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
+  location: Pittsburgh, PA
+  date: Aug. 2026 - Present
+  logo: /assets/images/badges/cmu.png
+  tags: [LLM Agents, Agent Harnesses, Evaluation]
+  bullets:
+  - >-
+    Ongoing research on <strong>meta-harness optimization for LLM agents</strong>.
+
 - title: Software Engineering Intern
   org: ASUS
   dept: Open Cloud Infrastructure Software R&D Team
@@ -44,7 +59,10 @@ work:
     ray-casts detections onto wall planes.
 
 - title: Research Assistant, Edge LLM Compression
-  org: Wireless Ad-Hoc and Sensor Networks Laboratory, NCU
+  org: >-
+    <a href="https://wasn.csie.ncu.edu.tw/" target="_blank">Wireless Ad-Hoc and Sensor Networks Laboratory</a>, NCU
+  dept: >-
+    Advised by <a href="https://wasn.csie.ncu.edu.tw/advisor" target="_blank">Min-Te Sun</a>
   location: Taoyuan, Taiwan
   date: Sep. 2025 - Feb. 2026
   logo: /assets/images/badges/wasn.png

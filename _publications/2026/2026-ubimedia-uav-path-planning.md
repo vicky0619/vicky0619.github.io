@@ -4,7 +4,7 @@ date:           2026-05-01 00:00:00 +0800
 selected:       true
 pub:            "Ubi-Media Computing, Pervasive Systems, Algorithms and Networks (Ubi-Media 2026)"
 pub_date:       "2026"
-cover:          /assets/images/covers/uav-path-planning.svg
+cover:          /assets/images/covers/uav-teaser.png
 pub_last:       "Communications in Computer and Information Science, vol. 2940, pp. 242-259"
 abstract: >-
   A dual-strategy planner for autonomous inspection of building structures: layered MST-DFS for

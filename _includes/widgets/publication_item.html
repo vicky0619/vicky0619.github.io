@@ -1,7 +1,7 @@
 {% assign item = include.item %}
 <div class="d-none d-md-block">
     <div class="row no-gutters {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
-        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3">
+        <div class="col-md-3 col-xl-2 mb-md-0 p-md-3 zoomable">
             {%- if item.cover -%}
             <img data-src="{% if item.cover contains '://' %}{{ item.cover }}{% else %}{{ item.cover | relative_url }}{% endif %}" alt="{{ item.title }}" class="lazy w-100 rounded-sm" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
             {%- else -%}

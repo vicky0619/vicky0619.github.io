@@ -20,8 +20,11 @@ short_bio: >-
   <p>
     I am a master's student in <strong>Intelligent Information Systems</strong> at Carnegie Mellon University's
     <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a>, graduating in
-    <strong>December 2027</strong>. Before CMU I earned my B.S. in Computer Science and Information Engineering
-    from National Central University, Taiwan.
+    <strong>December 2027</strong>. I am a graduate researcher at
+    <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>, advised by
+    <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>, working on
+    <strong>meta-harness optimization for LLM agents</strong>. Before CMU I earned my B.S. in Computer
+    Science and Information Engineering from National Central University, Taiwan.
   </p>
   <p>
     I build <strong>AI developer tools and workflow automation</strong>, on top of an applied-AI, mobile, and
@@ -33,6 +36,10 @@ short_bio: >-
   <p>
     <strong>I am looking for Summer 2027 software engineering internships</strong> in developer tooling,
     infrastructure and automation, and applied AI.
+  </p>
+  <p class="bio-personal">
+    Off the clock you will find me in the gym, across a table-tennis table, or doing laps in the pool,
+    with K-pop and pop on somewhere in the background, and a trip half-planned in another tab.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
@@ -52,6 +59,15 @@ education:
   date: Sep. 2022 - Jun. 2026
 
 experience:
+- name: Carnegie Mellon University
+  logo: /assets/images/badges/cmu.png
+  position: >-
+    Graduate Researcher, <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>
+  dept: >-
+    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a> &middot;
+    Directed study advised by <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>
+    and <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
+  date: Aug. 2026 - Present
 - name: ASUS
   logo: /assets/images/badges/asus.png
   dept: Open Cloud Infrastructure Software R&amp;D
@@ -63,8 +79,11 @@ experience:
   date: Jun. 2026 - Aug. 2026
 - name: National Central University
   logo: /assets/images/badges/wasn.png
-  dept: Wireless Ad-Hoc and Sensor Networks Lab
-  position: Research Assistant, Edge LLM Compression
+  dept: >-
+    <a href="https://wasn.csie.ncu.edu.tw/" target="_blank">Wireless Ad-Hoc and Sensor Networks Lab</a>
+  position: >-
+    Research Assistant, Edge LLM Compression, advised by
+    <a href="https://wasn.csie.ncu.edu.tw/advisor" target="_blank">Min-Te Sun</a>
   date: Sep. 2025 - Feb. 2026
 - name: AI POST
   logo: /assets/images/badges/aipost.png

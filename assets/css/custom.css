@@ -163,3 +163,206 @@ ul.list-unstyled > li.media + li.media {
     max-height: 100%;
     object-fit: contain;
 }
+
+/* ---------------------------------------------------------------------------
+   News timeline
+   --------------------------------------------------------------------------- */
+
+.news-timeline {
+    position: relative;
+    padding-left: 24px;
+}
+
+/* the rail */
+.news-timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #dde3ec 0%, #e9edf3 70%, rgba(233,237,243,0) 100%);
+}
+
+/* year marker */
+.news-year {
+    position: relative;
+    margin: 1.5rem 0 0.55rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: #7c8899;
+}
+
+.news-year:first-child {
+    margin-top: 0.15rem;
+}
+
+.news-year::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    margin-top: -6.5px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #64748b;
+    border: 3px solid #fff;
+    box-sizing: content-box;
+    box-shadow: 0 0 0 1px #dde3ec;
+}
+
+/* one news entry */
+.news-item {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: 0.42rem 0;
+    border-radius: 0.4rem;
+    transition: background-color 0.15s ease;
+}
+
+.news-item::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 0.85em;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ccd4e0;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.news-item:hover::before {
+    border-color: #2563eb;
+    background: #dbeafe;
+}
+
+.news-date {
+    flex: 0 0 5.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #94a3b8;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.news-text {
+    flex: 1 1 16rem;
+    font-size: 0.97rem;
+    line-height: 1.55;
+    color: #343a40;
+}
+
+.news-text a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.35);
+}
+
+.news-text a:hover {
+    border-bottom-color: #2563eb;
+}
+
+@media (max-width: 575.98px) {
+    .news-date {
+        flex: 0 0 100%;
+        margin-bottom: 0.1rem;
+    }
+}
+
+/* A lighter register for the personal line at the end of the bio. */
+.text-profile-bio .bio-personal {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #eef1f5;
+    color: #6b7684;
+    font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Click-to-zoom lightbox
+   --------------------------------------------------------------------------- */
+
+.lb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 3vw;
+    background: rgba(15, 20, 28, 0.88);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    cursor: zoom-out;
+}
+
+.lb-overlay.is-open {
+    display: flex;
+    animation: lb-fade 0.16s ease-out;
+}
+
+@keyframes lb-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.lb-figure {
+    margin: 0;
+    max-width: 100%;
+    max-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lb-img {
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: 0.4rem;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lb-cap {
+    margin-top: 0.7rem;
+    color: #dfe4ea;
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 70ch;
+}
+
+.lb-close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 2.4rem;
+    line-height: 1;
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.lb-close:hover { opacity: 1; }
+
+/* Hover affordance so it is obvious a figure can be opened. */
+.zoomable img,
+img.zoomable {
+    transition: filter 0.15s ease, box-shadow 0.15s ease;
+}
+
+.zoomable img:hover,
+img.zoomable:hover {
+    filter: brightness(1.04);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
+}
