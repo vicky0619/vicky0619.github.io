@@ -4,7 +4,7 @@
         <div class="media">
             {% if item.logo %}
             <div class="cv-entry-logo mr-3 mt-1">
-                <img src="{{ item.logo | relative_url }}" alt="{{ item.org }}">
+                <img src="{{ item.logo | relative_url }}" alt="{{ item.org | strip_html | escape }}">
             </div>
             {% endif %}
             <div class="media-body">

@@ -28,7 +28,7 @@
 
             <div class="col-lg-4 order-1 order-lg-2 mb-4 mb-lg-0">
                 {% if site.data.profile.portrait_url %}
-                <img src="{{ site.data.profile.portrait_url | relative_url }}" alt="{{ site.data.profile.primary_name }}" class="hero-portrait">
+                <img src="{{ site.data.profile.portrait_url | relative_url }}" alt="{{ site.data.profile.primary_name | strip_html | escape }}" class="hero-portrait">
                 {% endif %}
 
                 <div class="text-center mt-3 hero-links">

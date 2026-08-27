@@ -11,7 +11,7 @@
         {% for item in include.items %}
         <div class="entry-row d-flex align-items-start">
             <div class="entry-logo mr-3">
-                {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="{{ item.name }}">{% endif %}
+                {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="{{ item.name | strip_html | escape }}">{% endif %}
             </div>
             <div class="flex-grow-1 min-width-0">
                 <div class="d-flex flex-wrap align-items-baseline">
