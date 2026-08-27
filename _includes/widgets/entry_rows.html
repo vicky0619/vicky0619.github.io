@@ -1,0 +1,27 @@
+{% comment %}
+  Full-width Education / Experience list.
+  Params: items (list from _data/profile.yml), title, icon (optional Font Awesome class)
+{% endcomment %}
+<div class="card border-0 shadow-sm bg-white mb-3">
+    <div class="card-body p-4">
+        <h6 class="entry-section-title mb-3">
+            {% if include.icon %}<i class="{{ include.icon }}"></i> {% endif %}{{ include.title }}
+        </h6>
+
+        {% for item in include.items %}
+        <div class="entry-row d-flex align-items-start">
+            <div class="entry-logo mr-3">
+                {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="{{ item.name }}">{% endif %}
+            </div>
+            <div class="flex-grow-1 min-width-0">
+                <div class="d-flex flex-wrap align-items-baseline">
+                    <div class="entry-name font-weight-bold mr-3">{{ item.name }}</div>
+                    <div class="ml-auto text-muted small no-break"><em>{{ item.date }}</em></div>
+                </div>
+                {% if item.position %}<div class="entry-position">{{ item.position }}</div>{% endif %}
+                {% if item.dept %}<div class="entry-dept text-muted small">{{ item.dept }}</div>{% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
