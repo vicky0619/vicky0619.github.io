@@ -20,15 +20,15 @@ short_bio: >-
   <p>
     I am a master's student in <strong>Intelligent Information Systems</strong> at Carnegie Mellon
     University's <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a>,
-    graduating <strong>December 2027</strong>, and a graduate researcher at
+    graduating <strong>December 2027</strong>, and a research assistant at
     <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a> with
     <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>, working on
-    <strong>meta-harness optimization for LLM agents</strong>.
+    <strong>agent harness and model co-optimization</strong>.
   </p>
-  <p>
     I build <strong>AI developer tools and workflow automation</strong>: test automation and LLM tooling
     at <strong>ASUS</strong>, geometric reasoning over AR room scans at <strong>RoomMuse</strong>, and
     edge LLM compression at <strong>NCU</strong>.
+  <p>
     <strong>I am looking for Summer 2027 software engineering internships</strong> in developer tooling,
     infrastructure, and applied AI.
   </p>
@@ -57,12 +57,12 @@ experience:
 - name: Carnegie Mellon University
   logo: /assets/images/badges/cmu.png
   position: >-
-    Graduate Researcher, <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>
+    Research Assistant, <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>
   dept: >-
-    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a> &middot;
-    Directed study advised by <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>
-    and <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
-  date: Aug. 2026 - Present
+    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a> &middot; advised by
+    <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a> and
+    <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
+  date: Sep. 2026 - Present
 - name: ASUS
   logo: /assets/images/badges/asus.png
   dept: Open Cloud Infrastructure Software R&amp;D

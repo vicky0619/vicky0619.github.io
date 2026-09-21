@@ -4,20 +4,30 @@
 # `note` replaces the org line for entries that have no organisation.
 
 work:
-- title: Graduate Researcher
+- title: Research Assistant, Agent Harness and Model Co-Optimization
   org: >-
-    <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a>, Carnegie Mellon University
+    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a>, Carnegie Mellon University
   dept: >-
-    <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technologies Institute</a> &middot;
-    Directed study advised by <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a>
-    and <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
+    <a href="https://www.phontron.com/neulab" target="_blank">NeuLab</a> &middot; advised by
+    <a href="http://www.phontron.com/" target="_blank">Prof. Graham Neubig</a> and
+    <a href="https://www.lti.cs.cmu.edu/people/students/sutawika-lintang.html" target="_blank">Lintang Sutawika</a>
   location: Pittsburgh, PA
-  date: Aug. 2026 - Present
+  date: Sep. 2026 - Present
   logo: /assets/images/badges/cmu.png
-  tags: [LLM Agents, Agent Harnesses, Evaluation]
+  tags: [LLM Agents, Evaluation Infrastructure, Data Selection, vLLM, GPU Clusters]
   bullets:
   - >-
-    Ongoing research on <strong>meta-harness optimization for LLM agents</strong>.
+    Built a <strong>failure-analysis pipeline over 720 agent trials</strong> of raw JSON telemetry,
+    classifying each trial by exit state and exposing a <strong>15.4% silent failure rate</strong>
+    the reported mean absorbed, a 10-point AIME swing.
+  - >-
+    Selected evaluation subsets with <strong>nearest-neighbour search over a 1.79M-row dataset</strong>,
+    re-embedding all <strong>17,398 DAPO-Math problems</strong> with sentence-transformers to rule out
+    a text artifact, 91 of 100 picks surviving.
+  - >-
+    Closed a <strong>silent cross-job failure on a shared multi-tenant GPU cluster</strong>, where a dead
+    vLLM server sent every trial to another job's endpoint, with dynamic port allocation and
+    served-model assertions <strong>shipped as a pull request</strong>.
 
 - title: Software Engineering Intern
   org: ASUS
@@ -39,7 +49,8 @@ work:
     commit-history, OS-metadata, current-file, and repository-map context selected from an evaluation
     of candidates.
   - >-
-    Cut hands-on onboarding support by authoring the assistant's <strong>Docusaurus documentation site</strong>.
+    Authored the assistant's <strong>Docusaurus documentation site</strong>, reducing hands-on
+    onboarding support for adopting teams.
 
 - title: Startup Engineer
   org: RoomMuse
@@ -54,9 +65,9 @@ work:
     <strong>six-rule geometric conflict engine</strong> that blocks any unit sealing a socket, pipe, or
     doorway while passing intended connections (<strong>45 tests</strong>).
   - >-
-    Removed manual fixture surveying by localizing sockets from the same <strong>Swift and RealityKit</strong>
-    scan with a <strong>classical-CV pipeline</strong> (thresholding, connected components, NMS) that
-    ray-casts detections onto wall planes.
+    Localized wall sockets from an <strong>iOS AR room scan built in Swift with RealityKit</strong> using a
+    <strong>classical-CV pipeline</strong> (adaptive thresholding, connected components, NMS), ray-casting
+    detections through the camera pose onto scanned wall planes.
 
 - title: Research Assistant, Edge LLM Compression
   org: >-
@@ -70,14 +81,16 @@ work:
   tags: [PyTorch, GPTQ, Knowledge Distillation, DeepSpeed, Edge Deployment]
   bullets:
   - >-
-    Sharded teacher-student distillation across 3 GPUs with <strong>DeepSpeed ZeRO-2</strong>, splitting
-    optimizer state and gradients, since <strong>ZeRO-3 sharding corrupts GPTQ-packed quantized weights</strong>.
+    Scaled teacher-student distillation to <strong>data-parallel training on 3 GPUs with DeepSpeed
+    ZeRO-2</strong>, sharding optimizer state and gradients, since <strong>ZeRO-3 parameter sharding
+    corrupts GPTQ-packed weights</strong>.
   - >-
     Recovered <strong>4-bit accuracy at 2-bit model size</strong> (IoU 0.9998, 1.18 GB) by fine-tuning a
     Llama-3.2 student with <strong>GPTQ quantization and LLM-Neo knowledge distillation</strong> in PyTorch.
   - >-
-    Surveyed <strong>llama.cpp, vLLM, and SGLang</strong> for edge deployment, mapping
-    <strong>latency versus throughput</strong> across PagedAttention, continuous batching, and prefix-cache reuse.
+    Surveyed <strong>llama.cpp, vLLM, and SGLang</strong> for serving on a <strong>Jetson AGX Orin</strong>
+    edge target, mapping <strong>latency versus throughput</strong> across PagedAttention, continuous
+    batching, and prefix-cache reuse.
 
 - title: AI Technical Writer and Educator
   org: AI POST
