@@ -17,6 +17,10 @@ work:
   tags: [LLM Agents, Evaluation Infrastructure, Data Selection, vLLM, GPU Clusters]
   bullets:
   - >-
+    Owned the <strong>data-selection track</strong> of a joint harness-and-model optimization project,
+    turning failed agent trajectories into the training-data signal for
+    <strong>rejection-sampling fine-tuning (RSFT)</strong>.
+  - >-
     Built a <strong>failure-analysis pipeline over 720 agent trials</strong> of raw JSON telemetry,
     classifying each trial by exit state and exposing a <strong>15.4% silent failure rate</strong>
     the reported mean absorbed, a 10-point AIME swing.

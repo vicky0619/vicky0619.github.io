@@ -22,7 +22,7 @@ navbar_title: Experience
                 <div class="mb-2 text-muted small">
                     Everything above is on one page, in ATS-friendly form, in my resume.
                 </div>
-                <a class="btn btn-sm btn-outline-dark" target="_blank" href="{{ site.data.profile.cv_link | relative_url }}">
+                <a class="btn btn-sm btn-outline-dark" target="_blank" href="{{ site.data.profile.cv_link | relative_url }}?v={{ site.time | date: '%s' }}">
                     <i class="fas fa-file-alt"></i> Download resume (PDF)
                 </a>
             </div>
