@@ -14,24 +14,32 @@ work:
   location: Pittsburgh, PA
   date: Sep. 2026 - Present
   logo: /assets/images/badges/cmu.png
-  tags: [LLM Agents, Evaluation Infrastructure, Data Selection, vLLM, GPU Clusters]
+  tags: [LLM Agents, Evaluation Infrastructure, Python, vLLM, Slurm, GPU Clusters]
   bullets:
   - >-
-    Owned the <strong>data-selection track</strong> of a joint harness-and-model optimization project,
-    turning failed agent trajectories into the training-data signal for
-    <strong>rejection-sampling fine-tuning (RSFT)</strong>.
+    Owned the <strong>evaluation and data-selection track</strong> of a research project that
+    automatically improves <strong>LLM agents</strong>, building the Python tooling that tests each
+    agent version and decides which problems it is measured on.
   - >-
-    Built a <strong>failure-analysis pipeline over 720 agent trials</strong> of raw JSON telemetry,
-    classifying each trial by exit state and exposing a <strong>15.4% silent failure rate</strong>
-    the reported mean absorbed, a 10-point AIME swing.
+    Found the project's real bottleneck was <strong>evaluation reliability</strong>: the benchmark
+    disagreed with itself on <strong>42% of problems</strong> under identical re-runs (Cohen's kappa
+    0.16), explaining three null experiments.
   - >-
-    Selected evaluation subsets with <strong>nearest-neighbour search over a 1.79M-row dataset</strong>,
-    re-embedding all <strong>17,398 DAPO-Math problems</strong> with sentence-transformers to rule out
-    a text artifact, 91 of 100 picks surviving.
+    Ran the lab's <strong>self-improving agent loop</strong> end to end for the first time on the GPU
+    cluster, fixing a breakage on main in a <strong>merged pull request</strong> so the system proposed
+    its first new agent version from baseline failures.
   - >-
-    Closed a <strong>silent cross-job failure on a shared multi-tenant GPU cluster</strong>, where a dead
-    vLLM server sent every trial to another job's endpoint, with dynamic port allocation and
-    served-model assertions <strong>shipped as a pull request</strong>.
+    Built a <strong>Python failure-analysis pipeline over 720 LLM agent runs</strong>, parsing raw JSON
+    logs to expose a <strong>15.4% silent failure rate</strong> the reported score had absorbed, a
+    10-point swing on the headline benchmark.
+  - >-
+    Kept evaluation running after external LLM APIs went down: <strong>self-hosted vLLM inference on
+    parallel GPU servers</strong> via Slurm, setting concurrency from server queue metrics to cut
+    <strong>projected runtime from 36 to 9 hours</strong>.
+  - >-
+    Built <strong>automated monitoring for long-running GPU jobs</strong> in Bash and Slurm that
+    <strong>cancels a failing job within four minutes</strong>, after a silent grading misconfiguration
+    scored 549 runs as zero with no error raised.
 
 - title: Software Engineering Intern
   org: ASUS
@@ -88,6 +96,10 @@ work:
     Scaled teacher-student distillation to <strong>data-parallel training on 3 GPUs with DeepSpeed
     ZeRO-2</strong>, sharding optimizer state and gradients, since <strong>ZeRO-3 parameter sharding
     corrupts GPTQ-packed weights</strong>.
+  - >-
+    Evaluated each configuration against <strong>4-bit and 2-bit quantized baselines</strong>, tuning
+    <strong>LoRA rank and KD loss weighting</strong> to isolate how much accuracy distillation
+    recovered.
   - >-
     Recovered <strong>4-bit accuracy at 2-bit model size</strong> (IoU 0.9998, 1.18 GB) by fine-tuning a
     Llama-3.2 student with <strong>GPTQ quantization and LLM-Neo knowledge distillation</strong> in PyTorch.
@@ -150,6 +162,9 @@ projects:
   - >-
     Shipped <strong>on-device model inference in an iOS app</strong>, running the team's YOLOv8n and Pix2Pix
     reflection-removal models in <strong>Swift with TensorFlow Lite</strong> at 94.5% accuracy across 7 classes.
+  - >-
+    Curated the <strong>2,000-image training set and 699-image evaluation set</strong> spanning varied
+    angles and lighting, and added reposition guidance so the app recovers from failed recognitions.
   - >-
     Integrated the iOS client with the team's <strong>AWS EC2 REST inference API</strong>, adding a cloud path
     for multi-user recognition.
