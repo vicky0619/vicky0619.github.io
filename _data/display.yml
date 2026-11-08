@@ -2,7 +2,7 @@ homepage:
   show_experience: true
   show_news: true
   show_selected_publications: true
-  num_news: 20
+  num_news: 6
 
 footer_text: >-
   &copy; Wen-Chi Tsai &middot;
